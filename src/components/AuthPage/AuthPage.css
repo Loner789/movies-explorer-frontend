@@ -1,0 +1,46 @@
+.auth-page {
+    margin: 0;
+    padding: 74px 70px 70px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.auth-page__container {
+    margin: 0;
+    padding: 0;
+    width: 396px;
+}
+
+.auth-page__greeting {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.auth-page__greeting-logo {
+    width: 38px;
+    height: 38px;
+}
+
+.auth-page__greeting-title {
+    margin: 0;
+    padding: 40px 0;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: #FFFFFF;
+}
+
+.auth-page__form{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}

@@ -1,0 +1,74 @@
+.form-buttons {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-buttons__button {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+.form-buttons__button_type_leave {
+    color: #EE3465;
+}
+
+.form-buttons__button_type_submit {
+    margin-top: 68px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #4285F4;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.form-buttons__button_place_profile {
+    margin-top: 208px;
+}
+
+.form-buttons__button_place_login {
+    margin-top: 159px;
+}
+
+.form-buttons__button_place_register {
+    margin-top: 68px;
+}
+
+.form-buttons__button-wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+}
+
+.form-buttons__caption {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #8B8B8B;
+}

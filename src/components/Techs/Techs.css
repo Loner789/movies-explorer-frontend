@@ -1,0 +1,87 @@
+.techs {
+    margin: 100px 0 0;
+    padding: 0 70px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    background: #272727;
+}
+
+.techs__wrapper {
+    margin: 0;
+    padding: 90px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.techs__subtitle {
+    margin: 0;
+    padding: 0 0 26px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+.techs__description {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+.techs__badges-container {
+    margin: 0;
+    padding: 100px 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.techs__badge {
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.techs__badge_type_html {
+    background-image: url(../../images/html-icon.svg);
+}
+
+.techs__badge_type_css {
+    background-image: url(../../images/css-icon.svg);
+}
+
+.techs__badge_type_js {
+    background-image: url(../../images/js-icon.svg);
+}
+
+.techs__badge_type_react {
+    background-image: url(../../images/react-icon.svg);
+}
+
+.techs__badge_type_git {
+    background-image: url(../../images/git-icon.svg);
+}
+
+.techs__badge_type_express {
+    background-image: url(../../images/express-icon.svg);
+}
+
+.techs__badge_type_mongo {
+    background-image: url(../../images/mongo-icon.svg);
+}

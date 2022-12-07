@@ -1,0 +1,24 @@
+.header {
+    margin: 0;
+    padding: 0 70px;
+    width: 100%;
+    min-height: 75px;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.header__logo {
+    margin: 0;
+    padding: 0;
+    width: 38px;
+    height: 38px;
+}
+
+.header__nav-wrapper {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}

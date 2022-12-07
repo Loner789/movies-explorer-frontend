@@ -1,0 +1,95 @@
+.about-project {
+    margin: 100px 0 0;
+    padding: 0 70px;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+}
+
+.about-project__info-wrapper {
+    margin: 0;
+    padding: 70px 0 0;
+    display: flex;
+    gap: 40px;
+}
+
+.about-project__info {
+    margin: 0;
+    padding: 0;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+}
+
+.about-project__info-title {
+    margin: 0;
+    padding: 0 0 26px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+.about-project__info-description {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #FFFFFF;
+}
+
+.about-project__graph-wrapper {
+    margin: 0;
+    padding: 110px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.about-project__graph {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 36px;
+    display: flex;
+}
+
+.about-project__graph-info {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.about-project__graph-info_type_backend {
+    width: 20%;
+    background-color: #3DDC84;
+    color: #000;
+}
+
+.about-project__graph-info_type_frontend {
+    width: 80%;
+    background-color: #303030;;
+    color: #FFF;
+}
+
+.about-project__graph-info_type_backend-caption {
+    width: 20%;
+    color: #8B8B8B;
+}
+
+.about-project__graph-info_type_frontend-caption {
+    width: 80%;
+    color: #8B8B8B;
+}

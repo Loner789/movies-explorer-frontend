@@ -1,0 +1,13 @@
+.input-error-message {
+    margin: 0;
+    padding: 8px 0 0;
+    width: 100%;
+    min-height: 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
+}
