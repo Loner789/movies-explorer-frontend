@@ -55,4 +55,66 @@
     color: #FFFFFF;
     border: 1px solid rgba(255, 255, 255, 0.6);
     border-radius: 3px;
+    box-sizing: border-box;
+}
+
+@media screen and (max-width: 1023px) {
+    .promo {
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center top 214px;
+    }
+
+    .promo__text {
+        margin-top: 566px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .promo__title {
+        padding-bottom: 22px;
+        font-size: 40px;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    .promo__subtitle {
+        max-width: 260px;
+        text-align: center;
+    }
+
+    .promo__button {
+        margin-top: 92px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .promo {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 30px;
+        background-size: 210px 206px;
+        background-position: center top 144px;
+    }
+
+    .promo__text {
+        margin-top: 394px;
+    }
+
+    .promo__title {
+        padding-bottom: 24px;
+        font-size: 30px;
+        line-height: 1.27;
+    }
+
+    .promo__button {
+        margin-top: 80px;
+    }
 }

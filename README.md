@@ -2,7 +2,7 @@
 
 **_[Cсылка на проект на сервере](https://movies-explorer.loner.nomoredomains.club)_**
 **_[Cсылка на проект на Github](https://loner789.github.io/movies-explorer-frontend/)_**
-**_[Cсылка на макет проекта в Figma]()_**
+**_[Cсылка на макет проекта в Figma](https://drive.google.com/file/d/1B0bR1Er87U_h8cprV43tVvGiKgIO2yQA/view?usp=sharing)_**
 
 ---
 

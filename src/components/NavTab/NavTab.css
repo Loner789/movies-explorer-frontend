@@ -3,7 +3,7 @@
     padding: 0;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 30px;
     list-style: none;
 }
 
@@ -11,9 +11,9 @@
     margin: 0;
     padding: 0;
     font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 1.29;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
     text-align: right;
     color: #FFFFFF;
     text-decoration: none;
@@ -24,12 +24,24 @@
     height: 32px;
     background: #3DDC84;
     border-radius: 3px;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 1.33;
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000;
+}
+
+@media screen and (max-width: 767px) {
+    .nav-tab {
+        gap: 14px;
+    }
+    
+    .nav-tab__link {
+        font-size: 10px;
+        line-height: 1.6;
+    }
+
+    .tab__link_type_login {
+        width: 54px;
+        height: 26px;
+    }
 }

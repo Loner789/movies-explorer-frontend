@@ -1,5 +1,5 @@
 .techs {
-    margin: 100px 0 0;
+    margin: 0;
     padding: 0 70px;
     width: 100%;
     font-family: 'Inter', sans-serif;
@@ -9,7 +9,7 @@
 
 .techs__wrapper {
     margin: 0;
-    padding: 90px 0;
+    padding: 90px 0 100px;
     display: flex;
     flex-direction: column;
 }
@@ -40,7 +40,7 @@
 
 .techs__badges-container {
     margin: 0;
-    padding: 100px 0;
+    padding: 100px 0 0;
     list-style: none;
     display: flex;
     justify-content: center;
@@ -84,4 +84,59 @@
 
 .techs__badge_type_mongo {
     background-image: url(../../images/mongo-icon.svg);
+}
+
+@media screen and (max-width: 1023px) {
+    .techs {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .techs__wrapper {
+        padding-top: 80px;
+        padding-bottom: 90px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .techs__subtitle {
+        padding-bottom: 22px;
+    }
+
+    .techs__description {
+        max-width: 460px;
+        font-size: 12px;
+    }
+
+    .techs__badges-container {
+        padding-top: 83px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .techs {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .techs__wrapper {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+    .techs__subtitle {
+        font-size: 30px;
+        padding-bottom: 24px;
+    }
+
+    .techs__description {
+        font-size: 11px;
+    }
+
+    .techs__badges-container {
+        padding-top: 50px;
+        padding-left: 71px;
+        padding-right: 71px;
+        flex-wrap: wrap;
+    }
 }

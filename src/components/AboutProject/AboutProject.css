@@ -1,5 +1,5 @@
 .about-project {
-    margin: 100px 0 0;
+    margin: 0;
     padding: 0 70px;
     width: 100%;
     font-family: 'Inter', sans-serif;
@@ -92,4 +92,63 @@
 .about-project__graph-info_type_frontend-caption {
     width: 80%;
     color: #8B8B8B;
+}
+
+@media screen and (max-width: 1023px) {
+    .about-project {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .about-project__info-wrapper {
+        gap: 30px;
+    }
+
+    .about-project__info-description {
+        font-size: 12px;
+    }
+
+    .about-project__graph-wrapper {
+        padding-top: 93px;
+        padding-bottom: 90px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .about-project {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .about-project__info-wrapper {
+        padding-top: 60px;
+        flex-direction: column;
+        gap: 56px;
+    }
+
+    .about-project__info-title {
+        font-size: 18px;
+        padding-bottom: 16px;
+    }
+
+    .about-project__info-description {
+        font-size: 11px;
+    }
+
+    .about-project__graph-wrapper {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+    .about-project__graph-info {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    .about-project__graph {
+        min-height: 35px;
+    }
+
+    .about-project__graph:last-of-type {
+        min-height: 31px;
+    }
 }

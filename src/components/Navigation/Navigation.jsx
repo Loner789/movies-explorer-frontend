@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // NAVIGATION COMPONENT:
 function Navigation() {
   return (
-    <ul className='navigation'>
+    <><ul className='navigation'>
       <li>
         <Link
           className='navigation__link'
@@ -26,7 +26,7 @@ function Navigation() {
           to='/profile'
         ></Link>
       </li>
-    </ul>
+    </ul><button type='button' className='navigation-burger-button' aria-label='Меню.'></button></>
   );
 }
 
