@@ -48,3 +48,28 @@
     background-color: inherit;
     cursor: pointer;
 }
+
+@media screen and (max-width: 1023px) {
+    .not-found-page {
+        padding: 408px 30px 222px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .not-found-page {
+        padding: 329px 10px 30px;
+    }
+
+    .not-found-page__error-code {
+        font-size: 80px;
+    }
+
+    .not-found-page__title {
+        padding-top: 10px;
+        font-size: 12px;
+    }
+
+    .not-found-page__return-button {
+        font-size: 12px;
+    }
+}

@@ -28,6 +28,10 @@
     color: #EE3465;
 }
 
+.form-buttons__button_type_redirect {
+    color: #4285F4;
+}
+
 .form-buttons__button_type_submit {
     margin-top: 68px;
     height: 45px;
@@ -71,4 +75,24 @@
     line-height: 17px;
     text-align: center;
     color: #8B8B8B;
+}
+
+@media screen and (max-width: 1023px) {
+    .form-buttons__button {
+        font-size: 12px;
+    }
+
+    .form-buttons__button_place_profile {
+        margin-top: 369px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .form-buttons__button_place_profile {
+        margin-top: 157px;
+    }
+
+    .form-buttons__button_place_login {
+        margin-top: 247px;
+    }
 }

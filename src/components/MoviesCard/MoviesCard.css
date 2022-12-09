@@ -1,7 +1,7 @@
 .movies-card {
     margin: 0;
     padding: 0;
-    max-width: 270px;
+    max-width: 100%;
 }
 
 .movies-card__trailer-link {
@@ -12,7 +12,7 @@
 
 .movies-card__image {
     width: 100%;
-    max-height: 151px;
+    aspect-ratio: 16/9;
 }
 
 .movies-card__info-wrapper {
@@ -60,4 +60,18 @@
     align-items: center;
     color: #8B8B8B;
     border-top: 1px solid #424242;;
+}
+
+@media screen and (max-width: 767px) {
+.movies-card__info-wrapper {
+    padding-bottom: 25px;
+}
+
+    .movies-card__name {
+        font-size: 12px;
+    }
+
+    .movies-card__duration {
+        font-size: 10px;
+    }
 }

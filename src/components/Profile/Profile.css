@@ -102,3 +102,24 @@
 .profile__form-button_type_leave {
     color: #EE3465;
 }
+
+@media screen and (max-width: 1023px) {
+    .profile {
+        padding: 236px 30px 269px;
+    }
+
+    .profile__title {
+        padding-bottom: 85px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile {
+        padding-top: 70px;
+        padding-bottom: 40px;
+    }
+
+    .profile__title {
+        padding-bottom: 70px;
+    }
+}

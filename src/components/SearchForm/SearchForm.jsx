@@ -7,14 +7,20 @@ import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 function SearchForm() {
   return (
     <section className='search-form' aria-label='Раздел поиска фильмов.'>
-      <div className='search-form__form-wrapper'>
+      <div className='search-form__form-container'>
         <form action='#' className='search-form__form' name='search-form'>
-          <input
-            type='search'
-            className='search-form__search-input'
-            placeholder='Фильм'
-          />
-          <button type='submit' className='search-form__submit-button' aria-label='Клопка поиска.'/>
+          <div className='search-form__input-wrapper'>
+            <input
+              type='search'
+              className='search-form__search-input'
+              placeholder='Фильм'
+            />
+            <button
+              type='submit'
+              className='search-form__submit-button'
+              aria-label='Клопка поиска.'
+            />
+          </div>
           <FilterCheckbox />
         </form>
       </div>
