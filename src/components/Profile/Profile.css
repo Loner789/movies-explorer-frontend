@@ -17,7 +17,7 @@
 
 .profile__title {
     margin: 0;
-    padding: 0 0 110px;
+    padding: 0 0 108px;
     width: 100%;
     max-width: 410px;
     font-style: normal;
@@ -109,7 +109,7 @@
     }
 
     .profile__title {
-        padding-bottom: 85px;
+        padding-bottom: 81px;
     }
 }
 
@@ -120,6 +120,6 @@
     }
 
     .profile__title {
-        padding-bottom: 70px;
+        padding-bottom: 65px;
     }
 }

@@ -15,7 +15,7 @@ function Login() {
           labelText='E-mail'
           inputType='email'
           inputName='email'
-          inputId='register-email'
+          inputId='login-email'
           labelModifier='form-input-label_place_auth'
           inputModifier='form-input_place_auth'
         />
@@ -25,7 +25,7 @@ function Login() {
           labelText='Пароль'
           inputType='password'
           inputName='password'
-          inputId='register-password'
+          inputId='login-password'
           labelModifier='form-input-label_place_auth'
           inputModifier='form-input_place_auth'
         />

@@ -46,7 +46,7 @@
 }
 
 .form-buttons__button_place_profile {
-    margin-top: 208px;
+    margin-top: 205px;
 }
 
 .form-buttons__button_place_login {
@@ -54,7 +54,7 @@
 }
 
 .form-buttons__button_place_register {
-    margin-top: 68px;
+    margin-top: 69px;
 }
 
 .form-buttons__button-wrapper {
@@ -78,17 +78,17 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .form-buttons__button {
-        font-size: 12px;
-    }
-
     .form-buttons__button_place_profile {
-        margin-top: 369px;
+        margin-top: 195px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .form-buttons__button_place_profile {
+        margin-top: 364px;
+    }
+
+    .form-buttons__button_place_register {
         margin-top: 157px;
     }
 
