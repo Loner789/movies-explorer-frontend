@@ -1,42 +1,94 @@
 // IMPORTS:
-import './Login.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import AuthPage from '../AuthPage/AuthPage';
-import FormInput from '../FormInput/FormInput';
-import FormButtons from '../FormButtons/FormButtons';
+import AuthButtons from '../AuthButtons/AuthButtons';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
 
-// REGISTER COMPONENT:
-function Login() {
+// Initial data for state-variable
+const initValues = {
+  email: '',
+  password: '',
+};
+
+// LOGIN COMPONENT:
+function Login(props) {
+  // Constants:
+  const { onLogin } = props;
+  const { values, errors, isValid, handleChange, setIsValid } =
+    useFormAndValidation(initValues);
+
+  // Side-effects:
+  useEffect(() => {
+    setIsValid(false);
+  }, []);
+
+  // Functions:
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    const { email, password } = values;
+
+    if (!email || !password) return;
+
+    onLogin(email, password)
+  }
+
   return (
     <AuthPage
       pageTitle='Рады видеть!'
-      emailInput={
-        <FormInput
-          labelText='E-mail'
-          inputType='email'
-          inputName='email'
-          inputId='login-email'
-          labelModifier='form-input-label_place_auth'
-          inputModifier='form-input_place_auth'
-        />
-      }
-      passwordInput={
-        <FormInput
-          labelText='Пароль'
-          inputType='password'
-          inputName='password'
-          inputId='login-password'
-          labelModifier='form-input-label_place_auth'
-          inputModifier='form-input_place_auth'
-        />
+      formName='login'
+      onSubmit={handleSubmit}
+      isValid={isValid}
+      children={
+        <>
+          <label
+            htmlFor='email'
+            className='auth-page__form-input-label'
+          >
+            E-mail
+            <input
+              type='email'
+              id='email'
+              name='email'
+              className='auth-page__form-input'
+              required
+              minLength='2'
+              maxLength='30'
+              onChange={handleChange}
+              value={values.email || ''}
+            />
+          </label>
+          <span className='auth-page__form-input-error'>{errors.email}</span>
+          <label
+            htmlFor='password'
+            className='auth-page__form-input-label'
+          >
+            Пароль
+            <input
+              type='password'
+              id='password'
+              name='password'
+              autoComplete='on'
+              className='auth-page__form-input'
+              required
+              minLength='2'
+              maxLength='30'
+              onChange={handleChange}
+              value={values.password || ''}
+            />
+          </label>
+          <span className='auth-page__form-input-error'>{errors.password}</span>
+        </>
       }
       buttons={
-        <FormButtons
-          topBtnText='Войти'
-          bottomBtnText='Регистрация'
-          topBtnModifier='form-buttons__button_type_submit form-buttons__button_place_login'
-          bottomBtnModifier='form-buttons__button_type_redirect'
+        <AuthButtons
+          placeModifier='auth-buttons_place_login'
+          buttonText='Войти'
           buttonCaption='Ещё не зарегистрированы?'
+          link='/signup'
+          linkText='Регистрация'
+          onSubmit={handleSubmit}
+          isValid={isValid}
         />
       }
     />

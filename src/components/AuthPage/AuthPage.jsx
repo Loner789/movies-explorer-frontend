@@ -3,12 +3,12 @@ import './AuthPage.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../images/logo.svg';
-import InputErrorMessage from '../InputErrorMessage/InputErrorMessage';
 
 // AUTH-PAGE COMPONENT:
 function AuthPage(props) {
   // Constants:
-  const { pageTitle, nameInput, emailInput, passwordInput, buttons } = props;
+  const { pageTitle,  formName, onSubmit, children, buttons } =
+    props;
 
   return (
     <main className='auth-page'>
@@ -23,15 +23,15 @@ function AuthPage(props) {
           </Link>
           <h2 className='auth-page__greeting-title'>{pageTitle}</h2>
         </div>
-        <form action='#' className='auth-page__form'>
-          {nameInput}
-          {nameInput ? <InputErrorMessage /> : ''}
-          {emailInput}
-          <InputErrorMessage />
-          {passwordInput}
-          <InputErrorMessage />
+        <form
+          className='auth-page__form'
+          name={formName}
+          onSubmit={onSubmit}
+          noValidate
+        >
+          {children}
+          {buttons}
         </form>
-        {buttons}
       </div>
     </main>
   );

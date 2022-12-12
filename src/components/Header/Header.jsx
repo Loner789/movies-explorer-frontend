@@ -7,8 +7,9 @@ import NavTab from '../NavTab/NavTab';
 import { Link, useLocation, Routes, Route } from 'react-router-dom';
 
 // HEADER COMPONENT:
-function Header() {
-  // Constants
+function Header(props) {
+  // Constants:
+  const { onClick } = props;
   const location = useLocation();
   const isVisible =
     location.pathname === '/' || 
@@ -24,7 +25,7 @@ function Header() {
       <div className='header__nav-wrapper'>
         <Routes>
           <Route path='/' element={<NavTab />} />
-          <Route path='*' element={<Navigation />} />
+          <Route path='*' element={<Navigation onClick={onClick} />} />
         </Routes>
       </div>
     </header>

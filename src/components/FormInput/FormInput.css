@@ -15,25 +15,13 @@
     align-items: center;
 }
 
-.form-input-label_place_auth {
-    flex-direction: column;
-    gap: 10px;
-    align-items: start;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 12px;
-    color: #8B8B8B;
-    border: none;
-
-}
-
 .form-input-label:last-child {
     border: none;
 }
 
 .form-input {
     margin: 0;
-    padding: 15px;
+    padding: 15px 0;
     width: calc(100% - 140px);
     background-color: inherit;
     border: none;
@@ -43,18 +31,6 @@
     line-height: 13px;
     text-align: right;
     color: #FFFFFF;
-}
-
-.form-input_place_auth {
-    padding: 15px;
-    width: 100%;
-    height: 46px;
-    box-sizing: border-box;
-    border-radius: 8px;
-    background-color: #2F2F2F;
-    text-align: left;
-    font-size: 13px;
-    line-height: 16px;
 }
 
 .form-input:focus-visible {
