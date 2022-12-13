@@ -18,6 +18,7 @@ function FormInput(props) {
     onChange,
     value,
     pattern,
+    disabled,
   } = props;
 
   return (
@@ -36,6 +37,7 @@ function FormInput(props) {
         onChange={onChange}
         value={value}
         pattern={pattern}
+        disabled={disabled}
       />
     </label>
   );

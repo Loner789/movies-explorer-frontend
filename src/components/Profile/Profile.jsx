@@ -64,7 +64,7 @@ function Profile(props) {
             onChange={handleChange}
             value={values.name || ''}
             pattern='^[a-zA-Zа-яА-Я\s-]+$'
-            formName='profile'
+            disabled={!isChangingClicked}
           />
           <FormInput
             id='profile-form-email'
@@ -78,7 +78,7 @@ function Profile(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.email || ''}
-            formName='profile'
+            disabled={!isChangingClicked}
           />
           <FormInputError
             classNameModifier='form-input-error_place_profile'

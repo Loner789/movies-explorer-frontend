@@ -72,7 +72,6 @@ function Login(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.password || ''}
-            formName='login'
           />
           <FormInputError
             classNameModifier='form-input-error_place_auth'

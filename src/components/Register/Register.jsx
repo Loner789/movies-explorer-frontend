@@ -55,7 +55,6 @@ function Register(props) {
             onChange={handleChange}
             value={values.name || ''}
             pattern='^[a-zA-Zа-яА-Я\s-]+$'
-            formName='register'
           />
           <FormInputError
             classNameModifier='form-input-error_place_auth'
@@ -73,7 +72,6 @@ function Register(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.email || ''}
-            formName='register'
           />
           <FormInputError
             classNameModifier='form-input-error_place_auth'
@@ -91,7 +89,6 @@ function Register(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.password || ''}
-            formName='register'
           />
           <FormInputError
             classNameModifier='form-input-error_place_auth'
