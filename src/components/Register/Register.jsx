@@ -1,6 +1,8 @@
 // IMPORTS:
 import React, { useEffect } from 'react';
 import AuthPage from '../AuthPage/AuthPage';
+import FormInput from '../FormInput/FormInput';
+import FormInputError from '../FormInputError/FormInputError';
 import AuthButtons from '../AuthButtons/AuthButtons';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
@@ -29,7 +31,7 @@ function Register(props) {
 
     const { name, email, password } = values;
 
-    onRegister(name, email, password)
+    onRegister(name, email, password);
   }
 
   return (
@@ -40,52 +42,61 @@ function Register(props) {
       isValid={isValid}
       children={
         <>
-          <label htmlFor='name' className='auth-page__form-input-label'>
-            Имя
-            <input
-              type='text'
-              id='name'
-              name='name'
-              className='auth-page__form-input'
-              required
-              minLength='2'
-              maxLength='30'
-              onChange={handleChange}
-              value={values.name || ''}
-            />
-          </label>
-          <span className='auth-page__form-input-error'>{errors.name}</span>
-          <label htmlFor='email' className='auth-page__form-input-label'>
-            E-mail
-            <input
-              type='email'
-              id='email'
-              name='email'
-              className='auth-page__form-input'
-              required
-              minLength='2'
-              maxLength='30'
-              onChange={handleChange}
-              value={values.email || ''}
-            />
-          </label>
-          <span className='auth-page__form-input-error'>{errors.email}</span>
-          <label htmlFor='password' className='auth-page__form-input-label'>
-            Пароль
-            <input
-              type='password'
-              id='password'
-              name='password'
-              autoComplete='on'
-              className='auth-page__form-input'
-              required
-              minLength='2'
-              maxLength='30'
-              onChange={handleChange}
-              value={values.password || ''}
-            />
-          </label>
-          <span className='auth-page__form-input-error'>{errors.password}</span>
+          <FormInput
+            id='register-form-name'
+            labelClassModifier='form-input-label_place_auth'
+            labelText='Имя'
+            type='text'
+            name='name'
+            placeholder='Введите имя'
+            inputClassModifier='form-input_place_auth'
+            minLength='2'
+            maxLength='30'
+            onChange={handleChange}
+            value={values.name || ''}
+            pattern='^[a-zA-Zа-яА-Я\s-]+$'
+            formName='register'
+          />
+          <FormInputError
+            classNameModifier='form-input-error_place_auth'
+            errorMessage={errors.name}
+          />
+          <FormInput
+            id='register-form-email'
+            labelClassModifier='form-input-label_place_auth'
+            labelText='E-mail'
+            type='email'
+            name='email'
+            placeholder='Введите email'
+            inputClassModifier='form-input_place_auth'
+            minLength='2'
+            maxLength='30'
+            onChange={handleChange}
+            value={values.email || ''}
+            formName='register'
+          />
+          <FormInputError
+            classNameModifier='form-input-error_place_auth'
+            errorMessage={errors.email}
+          />
+          <FormInput
+            id='register-form-password'
+            labelClassModifier='form-input-label_place_auth'
+            labelText='Пароль'
+            type='password'
+            name='password'
+            placeholder='Введите пароль'
+            inputClassModifier='form-input_place_auth'
+            minLength='2'
+            maxLength='30'
+            onChange={handleChange}
+            value={values.password || ''}
+            formName='register'
+          />
+          <FormInputError
+            classNameModifier='form-input-error_place_auth'
+            errorMessage={errors.password}
+          />
         </>
       }
       buttons={

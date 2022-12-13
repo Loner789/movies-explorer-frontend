@@ -6,7 +6,33 @@ import { Link } from 'react-router-dom';
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCard(props) {
   // Constants:
-  const { trailerLink, image, nameRU, movieId, duration } = props;
+  const {
+    trailerLink,
+    image,
+    nameRU,
+    movieId,
+    duration,
+    currentPath,
+    onMovieLike,
+    onMovieDelete,
+    isLiked,
+  } = props;
+  const moviesPage = currentPath === '/movies';
+  const movieLikeButtonClassName = `movies-card__button ${isLiked ? 'movies-card__like-button_active' : 'movies-card__like-button'} ${
+    !moviesPage && 'movies-card__button_hidden'
+  }`;
+  const movieDeleteButtonClassName = `movies-card__button movies-card__delete-button ${
+    moviesPage && 'movies-card__button_hidden'
+  }`;
+
+  // Functions:
+  function handleLikeClick() {
+    onMovieLike();
+  }
+
+  function handleDeleteClick() {
+    onMovieDelete();
+  }
 
   return (
     <li className='movies-card'>
@@ -26,17 +52,18 @@ function MoviesCard(props) {
         <h3 className='movies-card__name'>{nameRU}</h3>
         <button
           type='button'
-          className='movies-card__like-button'
+          className={movieLikeButtonClassName}
           aria-label='Кнопка лайка.'
+          onClick={handleLikeClick}
+        ></button>
+        <button
+          type='button'
+          className={movieDeleteButtonClassName}
+          aria-label='Кнопка удаления фильма.'
+          onClick={handleDeleteClick}
         ></button>
       </div>
       <p className='movies-card__duration'>{duration}</p>
-
-      {/* <button
-        type='button'
-        className=''
-        aria-label='Удалить из сохраненных.'
-      ></button> */}
     </li>
   );
 }

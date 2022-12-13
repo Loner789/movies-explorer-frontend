@@ -1,17 +1,16 @@
 // IMPORTS:
 import './Footer.css';
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import { ExternalLink } from 'react-external-link';
 
 // FOOTER COMPONENT:
-function Footer() {
-  // Constants
-  const location = useLocation();
+function Footer(props) {
+  // Constants:
+  const { currentPath } = props;
   const isVisible =
-    location.pathname === '/' ||
-    location.pathname === '/movies' ||
-    location.pathname === '/saved-movies';
+    currentPath === '/' ||
+    currentPath === '/movies' ||
+    currentPath === '/saved-movies';
 
   return isVisible ? (
     <footer className='footer'>
@@ -23,7 +22,7 @@ function Footer() {
         <div className='footer__links-wrapper'>
           <ExternalLink
             className='footer__link'
-            rel="noreferrer"
+            rel='noreferrer'
             href='https://practicum.yandex.ru'
             target='blank'
           >
@@ -31,7 +30,7 @@ function Footer() {
           </ExternalLink>
           <ExternalLink
             className='footer__link'
-            rel="noreferrer"
+            rel='noreferrer'
             href='https://github.com/Loner789/movies-explorer-frontend'
             target='blank'
           >

@@ -5,11 +5,14 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 
 // SAVED-MOVIES COMPONENT:
-function SavedMovies() {
+function SavedMovies(props) {
+    // Constants:
+    const { currentPath, onMovieDelete } = props;
+
   return (
     <main className='saved-movies' aria-label='Сохранённые фильмы.'>
       <SearchForm />
-      <MoviesCardList />
+      <MoviesCardList currentPath={currentPath} onMovieDelete={onMovieDelete}/>
     </main>
   );
 }

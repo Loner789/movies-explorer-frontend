@@ -32,6 +32,16 @@
     align-items: center;
     text-align: center;
     color: #FFFFFF;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.movies-cardlist__button:hover {
+    opacity: 0.8;
+}
+
+.movies-cardlist__button_visible {
+    visibility: visible;
 }
 
 @media screen and (max-width: 1151px) {

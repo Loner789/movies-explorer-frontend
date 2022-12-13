@@ -1,6 +1,8 @@
 // IMPORTS:
 import './Profile.css';
 import React, { useEffect, useContext } from 'react';
+import FormInput from '../FormInput/FormInput';
+import FormInputError from '../FormInputError/FormInputError';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -22,7 +24,7 @@ function Profile(props) {
   // Side-effects:
   useEffect(() => {
     resetForm();
-    setValues(currentUser);
+    setValues({ name: currentUser.name, email: currentUser.email });
     setIsValid(true);
   }, [currentUser]);
 
@@ -38,45 +40,50 @@ function Profile(props) {
   return (
     <main className='profile'>
       <div className='profile__container'>
-        <h2 className='profile__title'>Привет, Виталий!</h2>
+        <h2 className='profile__title'>{`Привет, ${currentUser.name}!`}</h2>
         <form
           className='profile__form'
           name='profile'
           onSubmit={handleSubmit}
           noValidate
         >
-          <span className='profile__form-input-error'>{errors.name}</span>
-          <label htmlFor='name' className='profile__form-input-label'>
-            Имя
-            <input
-              type='text'
-              id='name'
-              name='name'
-              className='profile__form-input'
-              required
-              minLength='2'
-              maxLength='30'
-              onChange={handleChange}
-              value={values.name || ''}
-              disabled={!isChangingClicked}
-            />
-          </label>
-          <label htmlFor='email' className='profile__form-input-label'>
-            E-mail
-            <input
-              type='email'
-              id='email'
-              name='email'
-              className='profile__form-input'
-              required
-              minLength='2'
-              maxLength='30'
-              onChange={handleChange}
-              value={values.email || ''}
-              disabled={!isChangingClicked}
-            />
-          </label>
-          <span className='profile__form-input-error'>{errors.email}</span>
+          <FormInputError
+            classNameModifier='form-input-error_place_profile'
+            errorMessage={errors.name}
+          />
+          <FormInput
+            id='profile-form-name'
+            labelClassModifier='form-input-label_place_profile'
+            labelText='Имя'
+            type='text'
+            name='name'
+            placeholder='Введите имя'
+            inputClassModifier='form-input_place_profile'
+            minLength='2'
+            maxLength='30'
+            onChange={handleChange}
+            value={values.name || ''}
+            pattern='^[a-zA-Zа-яА-Я\s-]+$'
+            formName='profile'
+          />
+          <FormInput
+            id='profile-form-email'
+            labelClassModifier='form-input-label_place_profile'
+            labelText='E-mail'
+            type='email'
+            name='email'
+            placeholder='Введите email'
+            inputClassModifier='form-input_place_profile'
+            minLength='2'
+            maxLength='30'
+            onChange={handleChange}
+            value={values.email || ''}
+            formName='profile'
+          />
+          <FormInputError
+            classNameModifier='form-input-error_place_profile'
+            errorMessage={errors.email}
+          />
           <div className='profile__buttons'>
             <button
               type='button'

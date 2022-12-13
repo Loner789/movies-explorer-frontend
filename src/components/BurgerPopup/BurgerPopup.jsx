@@ -39,17 +39,17 @@ function BurgerPopup(props) {
         <div className='burger-popup__links-wrapper'>
           <ul className='burger-popup__nav-links'>
             <li>
-              <NavLink to='/' className={setActive}>
+              <NavLink to='/' className={setActive} onClick={onClose}>
                 Главная
               </NavLink>
             </li>
             <li>
-              <NavLink to='/movies' className={setActive}>
+              <NavLink to='/movies' className={setActive} onClick={onClose}>
                 Фильмы
               </NavLink>
             </li>
             <li>
-              <NavLink to='/saved-movies' className={setActive}>
+              <NavLink to='/saved-movies' className={setActive} onClick={onClose}>
                 Сохранённые фильмы
               </NavLink>
             </li>
@@ -58,6 +58,7 @@ function BurgerPopup(props) {
             to='/profile'
             className='burger-popup__profile-link'
             aria-label='Профиль.'
+            onClick={onClose}
           />
         </div>
       </div>

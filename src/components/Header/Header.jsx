@@ -4,18 +4,17 @@ import React from 'react';
 import logo from '../../images/logo.svg';
 import Navigation from '../Navigation/Navigation';
 import NavTab from '../NavTab/NavTab';
-import { Link, useLocation, Routes, Route } from 'react-router-dom';
+import { Link, Routes, Route } from 'react-router-dom';
 
 // HEADER COMPONENT:
 function Header(props) {
   // Constants:
-  const { onClick } = props;
-  const location = useLocation();
+  const { currentPath, onClick } = props;
   const isVisible =
-    location.pathname === '/' || 
-    location.pathname === '/movies' ||
-    location.pathname === '/saved-movies' ||
-    location.pathname === '/profile';
+    currentPath === '/' ||
+    currentPath === '/movies' ||
+    currentPath === '/saved-movies' ||
+    currentPath === '/profile';
 
   return isVisible ? (
     <header className='header'>

@@ -35,18 +35,39 @@
     color: #FFFFFF;
 }
 
-.movies-card__like-button {
+.movies-card__button {
     margin: 0;
     padding: 0;
     width: 24px;
     height: 24px;
     border: none;
-    background-image: url(../../images/like-icon-disabled.svg);
     background-size: 24px 24px;
     background-position: center;
     background-repeat: no-repeat;
     background-color: inherit;
     flex-shrink: 0;
+    cursor: pointer;
+}
+
+.movies-card__button_hidden {
+    display: none;
+}
+
+.movies-card__like-button {
+    background-image: url(../../images/like-icon-disabled.svg);
+}
+
+.movies-card__like-button_active {
+    background-image: url(../../images/like-icon-enabled.svg);
+}
+
+.movies-card__delete-button {
+    background-image: url(../../images/close-icon-mini.svg);
+    visibility: hidden;
+}
+
+.movies-card__info-wrapper:hover>.movies-card__delete-button {
+    visibility: visible;
 }
 
 .movies-card__duration {

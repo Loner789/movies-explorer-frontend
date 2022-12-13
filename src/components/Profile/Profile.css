@@ -38,59 +38,6 @@
     flex-direction: column;
 }
 
-.profile__form-input-error {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 14px;
-    display: inline-block;
-    box-sizing: border-box;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 10px;
-    line-height: 1.2;
-    color: #EE3465;
-}
-
-.profile__form-input-label {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 47px;
-    border-bottom: 1px solid #424242;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 13px;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.profile__form-input-label:last-of-type {
-    border: none;
-}
-
-.profile__form-input {
-    margin: 0;
-    padding: 15px 0;
-    width: calc(100% - 140px);
-    background-color: inherit;
-    border: none;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 11px;
-    line-height: 13px;
-    text-align: right;
-    color: #FFFFFF;
-}
-
-.profile__form-input:focus-visible {
-    outline: none;
-}
-
 .profile__buttons {
     margin-top: 191px;
     height: max-content;
