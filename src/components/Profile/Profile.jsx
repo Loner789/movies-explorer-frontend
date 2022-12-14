@@ -3,6 +3,7 @@ import './Profile.css';
 import React, { useEffect, useContext } from 'react';
 import FormInput from '../FormInput/FormInput';
 import FormInputError from '../FormInputError/FormInputError';
+import Message from '../Message/Message';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -10,7 +11,14 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 function Profile(props) {
   // Constants:
   const currentUser = useContext(CurrentUserContext);
-  const { onProfileChange, onProfileEdit, onLogout, isChangingClicked } = props;
+  const {
+    onProfileChange,
+    onProfileEdit,
+    onLogout,
+    currentPath,
+    isChangingClicked,
+    isProfileUpdated,
+  } = props;
   const {
     values,
     errors,
@@ -22,6 +30,12 @@ function Profile(props) {
   } = useFormAndValidation({});
 
   // Side-effects:
+  useEffect(() => {
+    resetForm();
+    setValues({ name: currentUser.name, email: currentUser.email });
+    setIsValid(true);
+  }, []);
+
   useEffect(() => {
     resetForm();
     setValues({ name: currentUser.name, email: currentUser.email });
@@ -84,6 +98,13 @@ function Profile(props) {
             classNameModifier='form-input-error_place_profile'
             errorMessage={errors.email}
           />
+          <div className='profile__devider'>
+            <Message
+              message='Профиль успешно обновлен!'
+              currentPath={currentPath}
+              isProfileUpdated={isProfileUpdated}
+            />
+          </div>
           <div className='profile__buttons'>
             <button
               type='button'

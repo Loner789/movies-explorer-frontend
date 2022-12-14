@@ -38,8 +38,18 @@
     flex-direction: column;
 }
 
+.profile__devider {
+    margin: 0;
+    padding: 0;
+    min-height: 191px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .profile__buttons {
-    margin-top: 191px;
+    margin: 0;
+    padding: 0;
     height: max-content;
     display: flex;
     flex-direction: column;
@@ -106,8 +116,8 @@
         padding-bottom: 81px;
     }
 
-    .profile__buttons {
-        margin-top: 181px;
+    .profile__devider {
+        min-height: 181px;
     }
 }
 
@@ -121,7 +131,7 @@
         padding-bottom: 65px;
     }
 
-    .profile__buttons {
-        margin-top: 350px;
+    .profile__devider {
+        min-height: 350px;
     }
 }

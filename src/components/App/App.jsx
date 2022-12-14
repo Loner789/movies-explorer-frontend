@@ -1,6 +1,6 @@
 // IMPORTS:
 import './App.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
@@ -56,7 +56,7 @@ function App() {
   function handleProfileChange(name, email) {
     console.log(name, email);
     setIsChangingClicked(false);
-    navigate('/movies');
+    setIsProfileUpdated(true);
   }
 
   function handleProfileEdit() {
@@ -93,6 +93,13 @@ function App() {
   function handleSavedMoviesSearchForm(data) {
     console.log(data);
   }
+
+  // Side-effects:
+  useEffect(_ => {
+    if (currentPath !== '/profile' && isProfileUpdated) {
+      setIsProfileUpdated(false);
+    }
+  }, [currentPath]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -135,7 +142,9 @@ function App() {
                 onProfileChange={handleProfileChange}
                 onProfileEdit={handleProfileEdit}
                 onLogout={handleLogout}
+                currentPath={currentPath}
                 isChangingClicked={isChangingClicked}
+                isProfileUpdated={isProfileUpdated}
               />
             }
           />
