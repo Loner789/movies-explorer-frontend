@@ -3,11 +3,20 @@ import './FilterCheckbox.css';
 import React from 'react';
 
 // FILTER-CHECKBOX COMPONENT:
-function FilterCheckbox() {
+function FilterCheckbox(props) {
+  // Constants:
+  const { checkboxState, onCheckboxChange } = props;
+
   return (
     <div className='filter-checkbox'>
       <label htmlFor='toggler' className='filter-checkbox__label'>
-        <input type='checkbox' className='filter-checkbox__input' id='toggler' />
+        <input
+          type='checkbox'
+          className='filter-checkbox__input'
+          id='toggler'
+          checked={checkboxState}
+          onChange={onCheckboxChange}
+        />
         <span className='filter-checkbox__cover'></span>
       </label>
       <p className='filter-checkbox__title'>Короткометражки</p>

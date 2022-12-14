@@ -7,8 +7,7 @@ import logo from '../../images/logo.svg';
 // AUTH-PAGE COMPONENT:
 function AuthPage(props) {
   // Constants:
-  const { pageTitle,  formName, onSubmit, children, buttons } =
-    props;
+  const { pageTitle, formName, onSubmit, children } = props;
 
   return (
     <main className='auth-page'>
@@ -30,7 +29,6 @@ function AuthPage(props) {
           noValidate
         >
           {children}
-          {buttons}
         </form>
       </div>
     </main>

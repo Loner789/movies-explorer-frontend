@@ -41,56 +41,51 @@ function Login(props) {
       formName='login'
       onSubmit={handleSubmit}
       isValid={isValid}
-      children={
-        <>
-          <FormInput
-            id='login-form-email'
-            labelClassModifier='form-input-label_place_auth'
-            labelText='E-mail'
-            type='email'
-            name='email'
-            placeholder='Введите email'
-            inputClassModifier='form-input_place_auth'
-            minLength='2'
-            maxLength='30'
-            onChange={handleChange}
-            value={values.email || ''}
-          />
-          <FormInputError
-            classNameModifier='form-input-error_place_auth'
-            errorMessage={errors.email}
-          />
-          <FormInput
-            id='login-form-password'
-            labelClassModifier='form-input-label_place_auth'
-            labelText='Пароль'
-            type='password'
-            name='password'
-            placeholder='Введите пароль'
-            inputClassModifier='form-input_place_auth'
-            minLength='2'
-            maxLength='30'
-            onChange={handleChange}
-            value={values.password || ''}
-          />
-          <FormInputError
-            classNameModifier='form-input-error_place_auth'
-            errorMessage={errors.password}
-          />
-        </>
-      }
-      buttons={
-        <AuthButtons
-          placeModifier='auth-buttons_place_login'
-          buttonText='Войти'
-          buttonCaption='Ещё не зарегистрированы?'
-          link='/signup'
-          linkText='Регистрация'
-          onSubmit={handleSubmit}
-          isValid={isValid}
-        />
-      }
-    />
+    >
+      <FormInput
+        id='login-form-email'
+        labelClassModifier='form-input-label_place_auth'
+        labelText='E-mail'
+        type='email'
+        name='email'
+        placeholder='Введите email'
+        inputClassModifier='form-input_place_auth'
+        minLength='2'
+        maxLength='30'
+        onChange={handleChange}
+        value={values.email || ''}
+      />
+      <FormInputError
+        classNameModifier='form-input-error_place_auth'
+        errorMessage={errors.email}
+      />
+      <FormInput
+        id='login-form-password'
+        labelClassModifier='form-input-label_place_auth'
+        labelText='Пароль'
+        type='password'
+        name='password'
+        placeholder='Введите пароль'
+        inputClassModifier='form-input_place_auth'
+        minLength='2'
+        maxLength='30'
+        onChange={handleChange}
+        value={values.password || ''}
+      />
+      <FormInputError
+        classNameModifier='form-input-error_place_auth'
+        errorMessage={errors.password}
+      />
+      <AuthButtons
+        placeModifier='auth-buttons_place_login'
+        buttonText='Войти'
+        buttonCaption='Ещё не зарегистрированы?'
+        link='/signup'
+        linkText='Регистрация'
+        onSubmit={handleSubmit}
+        isValid={isValid}
+      />
+    </AuthPage>
   );
 }
 

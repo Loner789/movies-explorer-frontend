@@ -15,35 +15,6 @@
     list-style: none;
 }
 
-.movies-cardlist__button {
-    margin: 50px auto 80px;
-    padding: 0;
-    width: 320px;
-    height: 36px;
-    background: #2F2F2F;
-    border-radius: 6px;
-    border: none;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: #FFFFFF;
-    cursor: pointer;
-    visibility: hidden;
-}
-
-.movies-cardlist__button:hover {
-    opacity: 0.8;
-}
-
-.movies-cardlist__button_visible {
-    visibility: visible;
-}
-
 @media screen and (max-width: 1151px) {
     .movies-cardlist__container {
         gap: 30px;
@@ -75,7 +46,4 @@
         grid-template-columns: repeat(1, 1fr);
     }
 
-    .movies-cardlist__button {
-        width: 240px;
-    }
 }

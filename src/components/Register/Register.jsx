@@ -40,74 +40,69 @@ function Register(props) {
       formName='register'
       onSubmit={handleSubmit}
       isValid={isValid}
-      children={
-        <>
-          <FormInput
-            id='register-form-name'
-            labelClassModifier='form-input-label_place_auth'
-            labelText='Имя'
-            type='text'
-            name='name'
-            placeholder='Введите имя'
-            inputClassModifier='form-input_place_auth'
-            minLength='2'
-            maxLength='30'
-            onChange={handleChange}
-            value={values.name || ''}
-            pattern='^[a-zA-Zа-яА-Я\s-]+$'
-          />
-          <FormInputError
-            classNameModifier='form-input-error_place_auth'
-            errorMessage={errors.name}
-          />
-          <FormInput
-            id='register-form-email'
-            labelClassModifier='form-input-label_place_auth'
-            labelText='E-mail'
-            type='email'
-            name='email'
-            placeholder='Введите email'
-            inputClassModifier='form-input_place_auth'
-            minLength='2'
-            maxLength='30'
-            onChange={handleChange}
-            value={values.email || ''}
-          />
-          <FormInputError
-            classNameModifier='form-input-error_place_auth'
-            errorMessage={errors.email}
-          />
-          <FormInput
-            id='register-form-password'
-            labelClassModifier='form-input-label_place_auth'
-            labelText='Пароль'
-            type='password'
-            name='password'
-            placeholder='Введите пароль'
-            inputClassModifier='form-input_place_auth'
-            minLength='2'
-            maxLength='30'
-            onChange={handleChange}
-            value={values.password || ''}
-          />
-          <FormInputError
-            classNameModifier='form-input-error_place_auth'
-            errorMessage={errors.password}
-          />
-        </>
-      }
-      buttons={
-        <AuthButtons
-          placeModifier='auth-buttons_place_register'
-          buttonText='Зарегистрироваться'
-          buttonCaption='Уже зарегистрированы?'
-          link='/signin'
-          linkText='Войти'
-          onSubmit={handleSubmit}
-          isValid={isValid}
-        />
-      }
-    />
+    >
+      <FormInput
+        id='register-form-name'
+        labelClassModifier='form-input-label_place_auth'
+        labelText='Имя'
+        type='text'
+        name='name'
+        placeholder='Введите имя'
+        inputClassModifier='form-input_place_auth'
+        minLength='2'
+        maxLength='30'
+        onChange={handleChange}
+        value={values.name || ''}
+        pattern='^[a-zA-Zа-яА-Я\s-]+$'
+      />
+      <FormInputError
+        classNameModifier='form-input-error_place_auth'
+        errorMessage={errors.name}
+      />
+      <FormInput
+        id='register-form-email'
+        labelClassModifier='form-input-label_place_auth'
+        labelText='E-mail'
+        type='email'
+        name='email'
+        placeholder='Введите email'
+        inputClassModifier='form-input_place_auth'
+        minLength='2'
+        maxLength='30'
+        onChange={handleChange}
+        value={values.email || ''}
+      />
+      <FormInputError
+        classNameModifier='form-input-error_place_auth'
+        errorMessage={errors.email}
+      />
+      <FormInput
+        id='register-form-password'
+        labelClassModifier='form-input-label_place_auth'
+        labelText='Пароль'
+        type='password'
+        name='password'
+        placeholder='Введите пароль'
+        inputClassModifier='form-input_place_auth'
+        minLength='2'
+        maxLength='30'
+        onChange={handleChange}
+        value={values.password || ''}
+      />
+      <FormInputError
+        classNameModifier='form-input-error_place_auth'
+        errorMessage={errors.password}
+      />
+      <AuthButtons
+        placeModifier='auth-buttons_place_register'
+        buttonText='Зарегистрироваться'
+        buttonCaption='Уже зарегистрированы?'
+        link='/signin'
+        linkText='Войти'
+        onSubmit={handleSubmit}
+        isValid={isValid}
+      />
+    </AuthPage>
   );
 }
 

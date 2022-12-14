@@ -5,15 +5,19 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCardList(props) {
-    // Constants:
-    const { currentPath, onMovieLike, onMovieDelete, isLiked } = props;
+  // Constants:
+  const { currentPath, onMovieLike, onMovieDelete, isLiked } = props;
 
   return (
     <section className='movies-cardlist'>
       <ul className='movies-cardlist__container'>
         <MoviesCard
-          trailerLink={'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'}
-          image={'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'}
+          trailerLink={
+            'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'
+          }
+          image={
+            'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'
+          }
           nameRU={'33 слова о дизайне'}
           movieId={'12345'}
           duration={'1ч42м'}
@@ -23,7 +27,6 @@ function MoviesCardList(props) {
           isLiked={isLiked}
         />
       </ul>
-      <button type='button' className='movies-cardlist__button movies-cardlist__button_visible'>Ещё</button>
     </section>
   );
 }

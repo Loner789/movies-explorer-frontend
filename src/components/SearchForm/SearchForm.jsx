@@ -2,18 +2,40 @@
 import './SearchForm.css';
 import React from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
+import useFormAndValidation from '../../hooks/useFormAndValidation';
 
 // SEARCH-FORM COMPONENT:
-function SearchForm() {
+function SearchForm(props) {
+  // Constants:
+  const { checkboxState, onCheckboxChange, onSearch } = props;
+  const { values, handleChange, isValid } = useFormAndValidation();
+
+  // Functions:
+  function handleSubmit(e) {
+    e.preventDefault();
+
+    isValid && onSearch(values.movie);
+  }
+
   return (
     <section className='search-form' aria-label='Раздел поиска фильмов.'>
       <div className='search-form__form-container'>
-        <form action='#' className='search-form__form' name='search-form'>
+        <form
+          className='search-form__form'
+          name='search-form'
+          onSubmit={handleSubmit}
+          noValidate
+        >
           <div className='search-form__input-wrapper'>
             <input
               type='search'
+              name='movie'
+              id='search-form-input'
               className='search-form__search-input'
               placeholder='Фильм'
+              required
+              value={values.movie || ''}
+              onChange={handleChange}
             />
             <button
               type='submit'
@@ -21,7 +43,7 @@ function SearchForm() {
               aria-label='Клопка поиска.'
             />
           </div>
-          <FilterCheckbox />
+          <FilterCheckbox checkboxState={checkboxState} onCheckboxChange={onCheckboxChange} />
         </form>
       </div>
     </section>

@@ -23,10 +23,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState({});
   const [isBurgerPopupOpen, setIsBurgerPopupOpen] = useState(false);
   const [isChangingClicked, setIsChangingClicked] = useState(false);
+  const [isShortFilm, setIsShortFilm] = useState(false);
   // const [loggedIn, setLoggedIn] = useState(false);
-  // const [savedMovies, setSavedMovies] = useState([]);
-  // const [isShortFilm, setIsShortFilm] = useState(false);
   // const [movies, setMovies] = useState([]);
+  // const [savedMovies, setSavedMovies] = useState([]);
   // const [isLoading, setIsLoading] = useState(false);
 
   // Functions:
@@ -71,22 +71,72 @@ function App() {
     console.log('Delete!');
   }
 
+  function handleMoviesCheckboxChange(isShortFilm) {
+    console.log(isShortFilm);
+  }
+
+  function handleSavedMoviesCheckboxChange(isShortFilm) {
+    console.log(isShortFilm);
+  }
+
+  function handleMoviesSearchForm(data) {
+    console.log(data);
+  }
+
+  function handleSavedMoviesSearchForm(data) {
+    console.log(data);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
         <Header currentPath={currentPath} onClick={handleBurgerButtonClick} />
         <Routes>
           <Route path='/' element={<Main />} />
-          <Route path='/movies' element={<Movies currentPath={currentPath} onMovieLike={handleMovieLikeClick}/>} />
-          <Route path='/saved-movies' element={<SavedMovies currentPath={currentPath} onMovieDelete={handleMovieDeleteClick}/>} />
-          <Route path='/profile' element={<Profile onProfileChange={handleProfileChange} onProfileEdit={handleProfileEdit} onLogout={handleLogout} isChangingClicked={isChangingClicked}/>} />
-          <Route path='/signup' element={<Register onRegister={handleRegister} />} />
+          <Route
+            path='/movies'
+            element={
+              <Movies
+                currentPath={currentPath}
+                onCheckboxChange={handleMoviesCheckboxChange}
+                onSearch={handleMoviesSearchForm}
+                onMovieLike={handleMovieLikeClick}
+              />
+            }
+          />
+          <Route
+            path='/saved-movies'
+            element={
+              <SavedMovies
+                currentPath={currentPath}
+                checkboxState={isShortFilm}
+                onCheckboxChange={handleSavedMoviesCheckboxChange}
+                onSearch={handleSavedMoviesSearchForm}
+                onMovieDelete={handleMovieDeleteClick}
+              />
+            }
+          />
+          <Route
+            path='/profile'
+            element={
+              <Profile
+                onProfileChange={handleProfileChange}
+                onProfileEdit={handleProfileEdit}
+                onLogout={handleLogout}
+                isChangingClicked={isChangingClicked}
+              />
+            }
+          />
+          <Route
+            path='/signup'
+            element={<Register onRegister={handleRegister} />}
+          />
           <Route path='/signin' element={<Login onLogin={handleLogin} />} />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
         <Footer currentPath={currentPath} />
       </div>
-      <BurgerPopup isOpen={isBurgerPopupOpen} onClose={closePopup}/>
+      <BurgerPopup isOpen={isBurgerPopupOpen} onClose={closePopup} />
     </CurrentUserContext.Provider>
   );
 }
