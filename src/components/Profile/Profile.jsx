@@ -3,7 +3,9 @@ import './Profile.css';
 import React, { useEffect, useContext } from 'react';
 import FormInput from '../FormInput/FormInput';
 import FormInputError from '../FormInputError/FormInputError';
+import FormDevider from '../FormDevider/FormDevider';
 import Message from '../Message/Message';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
@@ -18,6 +20,7 @@ function Profile(props) {
     currentPath,
     isChangingClicked,
     isProfileUpdated,
+    errorMessage,
   } = props;
   const {
     values,
@@ -98,18 +101,20 @@ function Profile(props) {
             classNameModifier='form-input-error_place_profile'
             errorMessage={errors.email}
           />
-          <div className='profile__devider'>
+          <FormDevider>
             <Message
               message='Профиль успешно обновлен!'
               currentPath={currentPath}
               isProfileUpdated={isProfileUpdated}
+              errorMessage={errorMessage}
             />
-          </div>
+            <ErrorMessage errorMessage={errorMessage} />
+          </FormDevider>
           <div className='profile__buttons'>
             <button
               type='button'
               className={`profile__button profile__button_type_edit ${
-                isChangingClicked && 'profile__button_disactive'
+                isChangingClicked ? 'profile__button_disactive' : ''
               }`}
               onClick={onProfileEdit}
             >
@@ -118,7 +123,7 @@ function Profile(props) {
             <button
               type='button'
               className={`profile__button profile__button_type_leave ${
-                isChangingClicked && 'profile__button_disactive'
+                isChangingClicked ? 'profile__button_disactive' : ''
               }`}
               onClick={onLogout}
             >
@@ -127,7 +132,7 @@ function Profile(props) {
             <button
               type='submit'
               className={`profile__button profile__button_type_save ${
-                !isChangingClicked && 'profile__button_disactive'
+                !isChangingClicked ? 'profile__button_disactive' : ''
               }`}
               disabled={!isValid}
             >

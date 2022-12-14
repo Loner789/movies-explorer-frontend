@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import AuthPage from '../AuthPage/AuthPage';
 import FormInput from '../FormInput/FormInput';
 import FormInputError from '../FormInputError/FormInputError';
+import FormDevider from '../FormDevider/FormDevider';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import AuthButtons from '../AuthButtons/AuthButtons';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
@@ -16,7 +18,7 @@ const initValues = {
 // REGISTER COMPONENT:
 function Register(props) {
   // Constants:
-  const { onRegister } = props;
+  const { onRegister, errorMessage } = props;
   const { values, errors, isValid, handleChange, setIsValid } =
     useFormAndValidation(initValues);
 
@@ -93,8 +95,10 @@ function Register(props) {
         classNameModifier='form-input-error_place_auth'
         errorMessage={errors.password}
       />
+      <FormDevider>
+        <ErrorMessage errorMessage={errorMessage} />
+      </FormDevider>
       <AuthButtons
-        placeModifier='auth-buttons_place_register'
         buttonText='Зарегистрироваться'
         buttonCaption='Уже зарегистрированы?'
         link='/signin'

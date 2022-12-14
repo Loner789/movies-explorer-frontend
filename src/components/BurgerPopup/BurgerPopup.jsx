@@ -25,7 +25,7 @@ function BurgerPopup(props) {
 
   // Functions:
   const setActive = ({ isActive }) =>
-    `burger-popup__nav-link ${isActive && 'burger-popup__nav-link_active'}`;
+    `burger-popup__nav-link ${isActive ? 'burger-popup__nav-link_active' : ''}`;
 
   return (
     <div className={`burger-popup ${isOpen ? 'burger-popup_opened' : ''}`}>

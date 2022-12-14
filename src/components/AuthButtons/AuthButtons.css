@@ -45,14 +45,6 @@
     opacity: 0.6;
 }
 
-.auth-buttons_place_login {
-    margin-top: 159px;
-}
-
-.auth-buttons_place_register {
-    margin-top: 69px;
-}
-
 .auth-buttons__link-wrapper {
     margin: 0;
     padding: 0;
@@ -71,14 +63,4 @@
     line-height: 17px;
     text-align: center;
     color: #8B8B8B;
-}
-
-@media screen and (max-width: 767px) {
-    .auth-buttons_place_register {
-        margin-top: 157px;
-    }
-
-    .auth-buttons_place_login {
-        margin-top: 247px;
-    }
 }

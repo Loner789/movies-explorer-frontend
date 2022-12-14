@@ -38,15 +38,6 @@
     flex-direction: column;
 }
 
-.profile__devider {
-    margin: 0;
-    padding: 0;
-    min-height: 191px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .profile__buttons {
     margin: 0;
     padding: 0;
@@ -115,10 +106,6 @@
     .profile__title {
         padding-bottom: 81px;
     }
-
-    .profile__devider {
-        min-height: 181px;
-    }
 }
 
 @media screen and (max-width: 767px) {
@@ -129,9 +116,5 @@
 
     .profile__title {
         padding-bottom: 65px;
-    }
-
-    .profile__devider {
-        min-height: 350px;
     }
 }

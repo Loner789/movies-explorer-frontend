@@ -10,7 +10,7 @@ function Navigation(props) {
 
   // Functions:
   const setActive = ({ isActive }) =>
-    `navigation__link ${isActive && 'navigation__link_active'}`;
+    `navigation__link ${isActive ? 'navigation__link_active' : ''}`;
 
   return (
     <>

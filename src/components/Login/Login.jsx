@@ -3,6 +3,8 @@ import React, { useEffect } from 'react';
 import AuthPage from '../AuthPage/AuthPage';
 import FormInput from '../FormInput/FormInput';
 import FormInputError from '../FormInputError/FormInputError';
+import FormDevider from '../FormDevider/FormDevider';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import AuthButtons from '../AuthButtons/AuthButtons';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
@@ -15,7 +17,7 @@ const initValues = {
 // LOGIN COMPONENT:
 function Login(props) {
   // Constants:
-  const { onLogin } = props;
+  const { onLogin, errorMessage } = props;
   const { values, errors, isValid, handleChange, setIsValid } =
     useFormAndValidation(initValues);
 
@@ -76,8 +78,10 @@ function Login(props) {
         classNameModifier='form-input-error_place_auth'
         errorMessage={errors.password}
       />
+      <FormDevider>
+        <ErrorMessage errorMessage={errorMessage}/>
+      </FormDevider>
       <AuthButtons
-        placeModifier='auth-buttons_place_login'
         buttonText='Войти'
         buttonCaption='Ещё не зарегистрированы?'
         link='/signup'

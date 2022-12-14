@@ -7,6 +7,7 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Devider from '../Devider/Devider';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
+import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useMoviesAmount from '../../hooks/useMoviesAmount';
 
 // MOVIES COMPONENT:
@@ -20,6 +21,7 @@ function Movies(props) {
     isLoading,
     isFirstVisit,
     onMovieLike,
+    errorMessage
   } = props;
   const { moviesAmount, addMoreMovies } = useMoviesAmount();
 
@@ -45,6 +47,7 @@ function Movies(props) {
             movies={movies}
             isLoading={isLoading}
             message='Введите запрос в поисковую строку'
+            errorMessage={errorMessage}
           />
         )}
         {!isFirstVisit && movies.length === 0 && (
@@ -53,8 +56,10 @@ function Movies(props) {
             movies={movies}
             isLoading={isLoading}
             message='По вашему запросу ничего не найдено'
+            errorMessage={errorMessage}
           />
         )}
+        <ErrorMessage errorMessage={errorMessage} />
       </Devider>
     </main>
   );

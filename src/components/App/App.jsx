@@ -29,10 +29,8 @@ function App() {
   const [savedMovies, setSavedMovies] = useState([]);
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   // const [loggedIn, setLoggedIn] = useState(false);
-  
-  
-  
 
   // Functions:
   function handleBurgerButtonClick() {
@@ -95,11 +93,14 @@ function App() {
   }
 
   // Side-effects:
-  useEffect(_ => {
-    if (currentPath !== '/profile' && isProfileUpdated) {
-      setIsProfileUpdated(false);
-    }
-  }, [currentPath]);
+  useEffect(
+    (_) => {
+      if (currentPath !== '/profile' && isProfileUpdated) {
+        setIsProfileUpdated(false);
+      }
+    },
+    [currentPath]
+  );
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -118,6 +119,7 @@ function App() {
                 isLoading={isLoading}
                 isFirstVisit={isFirstVisit}
                 onMovieLike={handleMovieLikeClick}
+                errorMessage={errorMessage}
               />
             }
           />
@@ -132,6 +134,7 @@ function App() {
                 isLoading={isLoading}
                 isFirstVisit={isFirstVisit}
                 onMovieDelete={handleMovieDeleteClick}
+                errorMessage={errorMessage}
               />
             }
           />
@@ -145,14 +148,25 @@ function App() {
                 currentPath={currentPath}
                 isChangingClicked={isChangingClicked}
                 isProfileUpdated={isProfileUpdated}
+                errorMessage={errorMessage}
               />
             }
           />
           <Route
             path='/signup'
-            element={<Register onRegister={handleRegister} />}
+            element={
+              <Register
+                onRegister={handleRegister}
+                errorMessage={errorMessage}
+              />
+            }
           />
-          <Route path='/signin' element={<Login onLogin={handleLogin} />} />
+          <Route
+            path='/signin'
+            element={
+              <Login onLogin={handleLogin} errorMessage={errorMessage} />
+            }
+          />
           <Route path='*' element={<NotFoundPage />} />
         </Routes>
         <Footer currentPath={currentPath} />

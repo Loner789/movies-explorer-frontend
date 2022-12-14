@@ -10,7 +10,7 @@ function ButtonMore(props) {
   return ( 
     <button
       type='button'
-      className={`button-more ${(movies.length <= moviesAmount) && 'button-more_hidden'}`}
+      className={`button-more ${(movies.length <= moviesAmount) ? 'button-more_hidden' : ''}`}
       onClick={onClick}
     >
       Ещё

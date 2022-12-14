@@ -6,10 +6,10 @@ import { Link } from 'react-router-dom';
 // FORM-BUTTONS COMPONENT:
 function AuthButtons(props) {
   // Constants:
-  const { placeModifier, buttonText, buttonCaption, link, linkText, isValid } = props;
+  const { buttonText, buttonCaption, link, linkText, isValid } = props;
 
   return (
-    <div className={`auth-buttons ${placeModifier}`}>
+    <div className='auth-buttons'>
       <button
         type='submit'
         className='auth-buttons__button auth-buttons__button_type_submit'
