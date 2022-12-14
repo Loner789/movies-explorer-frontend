@@ -1,11 +1,14 @@
 // IMPORTS:
 import { useState, useCallback } from 'react';
 
-export function useFormAndValidation() {
+// Custom Hook:
+function useFormAndValidation() {
+  // Constants:
   const [values, setValues] = useState({});
   const [errors, setErrors] = useState({});
   const [isValid, setIsValid] = useState(true);
 
+  // Functions:
   const handleChange = (e) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });

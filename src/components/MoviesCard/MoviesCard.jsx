@@ -2,24 +2,28 @@
 import './MoviesCard.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCard(props) {
   // Constants:
   const {
+    movieId,
     trailerLink,
     image,
     nameRU,
-    movieId,
-    duration,
+    durationForCard,
     currentPath,
+    amountMovies,
     onMovieLike,
     onMovieDelete,
     isLiked,
+    index,
   } = props;
+  const screenWidth = useWindowWidth();
   const moviesPage = currentPath === '/movies';
   const movieLikeButtonClassName = `movies-card__button ${isLiked ? 'movies-card__like-button_active' : 'movies-card__like-button'} ${
-    !moviesPage && 'movies-card__button_hidden'
+    !moviesPage && screenWidth > 767 && 'movies-card__button_hidden'
   }`;
   const movieDeleteButtonClassName = `movies-card__button movies-card__delete-button ${
     moviesPage && 'movies-card__button_hidden'
@@ -35,7 +39,7 @@ function MoviesCard(props) {
   }
 
   return (
-    <li className='movies-card'>
+    <li className={`movies-card ${index >= amountMovies && 'movie_hidden'}`}>
       <Link
         to={{ pathname: trailerLink }}
         target='_blank'
@@ -63,7 +67,7 @@ function MoviesCard(props) {
           onClick={handleDeleteClick}
         ></button>
       </div>
-      <p className='movies-card__duration'>{duration}</p>
+      <p className='movies-card__duration'>{durationForCard}</p>
     </li>
   );
 }

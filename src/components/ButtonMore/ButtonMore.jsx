@@ -3,11 +3,15 @@ import './ButtonMore.css';
 import React from 'react';
 
 // BUTTON-MORE COMPONENT:
-function ButtonMore() {
+function ButtonMore(props) {
+  // Constants:
+  const {movies, moviesAmount, onClick} = props;
+
   return ( 
     <button
       type='button'
-      className='button-more button-more_visible'
+      className={`button-more ${(movies.length <= moviesAmount) && 'button-more_hidden'}`}
+      onClick={onClick}
     >
       Ещё
     </button>

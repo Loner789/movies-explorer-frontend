@@ -5,7 +5,7 @@ import React from 'react';
 // FILTER-CHECKBOX COMPONENT:
 function FilterCheckbox(props) {
   // Constants:
-  const { checkboxState, onCheckboxChange } = props;
+  const { onCheckboxChange } = props;
 
   return (
     <div className='filter-checkbox'>
@@ -14,7 +14,6 @@ function FilterCheckbox(props) {
           type='checkbox'
           className='filter-checkbox__input'
           id='toggler'
-          checked={checkboxState}
           onChange={onCheckboxChange}
         />
         <span className='filter-checkbox__cover'></span>

@@ -6,26 +6,52 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCardList(props) {
   // Constants:
-  const { currentPath, onMovieLike, onMovieDelete, isLiked } = props;
+  const {
+    movies,
+    currentPath,
+    moviesAmount,
+    onMovieLike,
+    onMovieDelete,
+    isLiked,
+  } = props;
+
+  // Functions:
+  function calculateDuration(movie) {
+    return parseInt(movie.duration / 60) > 0 ?
+      `${parseInt(movie.duration / 60)}ч ${movie.duration % 60}м` :
+      `${movie.duration % 60}м`;
+  }
 
   return (
-    <section className='movies-cardlist'>
+    <section className='movies-cardlist' aria-label='Блок с фильмами.'>
       <ul className='movies-cardlist__container'>
-        <MoviesCard
-          trailerLink={
-            'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'
-          }
-          image={
-            'http://klublady.ru/uploads/posts/2022-02/1644849720_29-klublady-ru-p-kapkeiki-ochen-krasivie-foto-30.jpg'
-          }
-          nameRU={'33 слова о дизайне'}
-          movieId={'12345'}
-          duration={'1ч42м'}
-          currentPath={currentPath}
-          onMovieLike={onMovieLike}
-          onMovieDelete={onMovieDelete}
-          isLiked={isLiked}
-        />
+        {movies &&
+          movies.forEach((movie) => {
+            return (
+              <MoviesCard
+                key={movie.id}
+                _id={movie.id}
+                movieId={movie.id}
+                trailerLink={movie.trailerLink}
+                image={movie.image}
+                nameRU={movie.nameRU}
+                nameEN={movie.nameEN}
+                thumbnail={movie.thumbnail}
+                country={movie.country || 'unknown'}
+                year={movie.year || 'unknown'}
+                description={movie.description || 'unknown'}
+                director={movie.director || 'unknown'}
+                duration={movie.duration}
+                durationForCard={calculateDuration(movie)}
+                currentPath={currentPath}
+                moviesAmount={moviesAmount}
+                onMovieLike={onMovieLike}
+                onMovieDelete={onMovieDelete}
+                isLiked={isLiked}
+                index={movies.indexOf(movie)}
+              />
+            );
+          })}
       </ul>
     </section>
   );

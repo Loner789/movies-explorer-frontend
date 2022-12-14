@@ -7,7 +7,7 @@ import useFormAndValidation from '../../hooks/useFormAndValidation';
 // SEARCH-FORM COMPONENT:
 function SearchForm(props) {
   // Constants:
-  const { checkboxState, onCheckboxChange, onSearch } = props;
+  const { onCheckboxChange, onSearch } = props;
   const { values, handleChange, isValid } = useFormAndValidation();
 
   // Functions:
@@ -43,7 +43,7 @@ function SearchForm(props) {
               aria-label='Клопка поиска.'
             />
           </div>
-          <FilterCheckbox checkboxState={checkboxState} onCheckboxChange={onCheckboxChange} />
+          <FilterCheckbox onCheckboxChange={onCheckboxChange} />
         </form>
       </div>
     </section>

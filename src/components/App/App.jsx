@@ -24,10 +24,15 @@ function App() {
   const [isBurgerPopupOpen, setIsBurgerPopupOpen] = useState(false);
   const [isChangingClicked, setIsChangingClicked] = useState(false);
   const [isShortFilm, setIsShortFilm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [movies, setMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
+  const [isProfileUpdated, setIsProfileUpdated] = useState(false);
+  const [isFirstVisit, setIsFirstVisit] = useState(true);
   // const [loggedIn, setLoggedIn] = useState(false);
-  // const [movies, setMovies] = useState([]);
-  // const [savedMovies, setSavedMovies] = useState([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  
+  
+  
 
   // Functions:
   function handleBurgerButtonClick() {
@@ -73,10 +78,12 @@ function App() {
 
   function handleMoviesCheckboxChange(isShortFilm) {
     console.log(isShortFilm);
+    setIsShortFilm(!isShortFilm);
   }
 
   function handleSavedMoviesCheckboxChange(isShortFilm) {
     console.log(isShortFilm);
+    setIsShortFilm(!isShortFilm);
   }
 
   function handleMoviesSearchForm(data) {
@@ -97,9 +104,12 @@ function App() {
             path='/movies'
             element={
               <Movies
+                movies={movies}
                 currentPath={currentPath}
                 onCheckboxChange={handleMoviesCheckboxChange}
                 onSearch={handleMoviesSearchForm}
+                isLoading={isLoading}
+                isFirstVisit={isFirstVisit}
                 onMovieLike={handleMovieLikeClick}
               />
             }
@@ -108,10 +118,12 @@ function App() {
             path='/saved-movies'
             element={
               <SavedMovies
+                movies={savedMovies}
                 currentPath={currentPath}
-                checkboxState={isShortFilm}
                 onCheckboxChange={handleSavedMoviesCheckboxChange}
                 onSearch={handleSavedMoviesSearchForm}
+                isLoading={isLoading}
+                isFirstVisit={isFirstVisit}
                 onMovieDelete={handleMovieDeleteClick}
               />
             }

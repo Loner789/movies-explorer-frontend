@@ -14,15 +14,15 @@
     text-align: center;
     color: #FFFFFF;
     cursor: pointer;
-    display: none;
+    display: flex;
 }
 
 .button-more:hover {
     opacity: 0.8;
 }
 
-.button-more_visible {
-    display: flex;
+.button-more_hidden {
+    display: none;
 }
 
 @media screen and (max-width: 767px) {

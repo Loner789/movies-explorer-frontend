@@ -7,30 +7,54 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Devider from '../Devider/Devider';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
+import useMoviesAmount from '../../hooks/useMoviesAmount';
 
 // MOVIES COMPONENT:
 function Movies(props) {
   // Constants:
   const {
+    movies,
     currentPath,
-    checkboxState,
     onCheckboxChange,
     onSearch,
+    isLoading,
+    isFirstVisit,
     onMovieLike,
   } = props;
+  const { moviesAmount, addMoreMovies } = useMoviesAmount();
 
   return (
     <main className='movies'>
-      <SearchForm
-        checkboxState={checkboxState}
-        onCheckboxChange={onCheckboxChange}
-        onSearch={onSearch}
+      <SearchForm onCheckboxChange={onCheckboxChange} onSearch={onSearch} />
+      <MoviesCardList
+        movies={movies}
+        currentPath={currentPath}
+        moviesAmount={moviesAmount}
+        onMovieLike={onMovieLike}
       />
-      <Preloader />
-      <MoviesCardList currentPath={currentPath} onMovieLike={onMovieLike} />
+      <Preloader isLoading={isLoading} />
       <Devider>
-        {/* <ButtonMore/> */}
-        <Message message='По вашему запросу ничего не найдено'/>
+        <ButtonMore
+          movies={movies}
+          moviesAmount={moviesAmount}
+          onClick={addMoreMovies}
+        />
+        {isFirstVisit && (
+          <Message
+            currentPath={currentPath}
+            movies={movies}
+            isLoading={isLoading}
+            message='Введите запрос в поисковую строку'
+          />
+        )}
+        {!isFirstVisit && movies.length === 0 && (
+          <Message
+            currentPath={currentPath}
+            movies={movies}
+            isLoading={isLoading}
+            message='По вашему запросу ничего не найдено'
+          />
+        )}
       </Devider>
     </main>
   );
