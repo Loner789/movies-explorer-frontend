@@ -66,6 +66,10 @@
     text-decoration: none;
 }
 
+.about-me__portfolio-link:hover {
+    opacity: 0.7;
+}
+
 .about-me__photo {
     margin: 0;
     padding: 0;

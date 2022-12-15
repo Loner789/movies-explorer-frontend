@@ -47,6 +47,10 @@
     background-repeat: no-repeat;
 }
 
+.portfolio__link:hover {
+    opacity: 0.7;
+}
+
 li:last-of-type>.portfolio__link {
     border: none;
 }
