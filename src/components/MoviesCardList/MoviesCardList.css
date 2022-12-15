@@ -27,11 +27,6 @@
         padding-left: 30px;
         padding-right: 30px;
     }
-
-    /* .movies-cardlist__container {
-        gap: 30px;
-        grid-template-columns: repeat(2, 1fr);
-    } */
 }
 
 @media screen and (max-width: 767px) {
