@@ -2,11 +2,11 @@
 import { useState, useEffect } from 'react';
 import useWindowWidth from './useWindowWidth';
 import {
-  INITIAL_NUMBER_OF_MOVIES_320_479,
-  INITIAL_NUMBER_OF_MOVIES_480_767,
-  INITIAL_NUMBER_OF_MOVIES_767_1280,
-  NUMBER_OF_MOVIES_TO_ADD_320_767,
-  NUMBER_OF_MOVIES_TO_ADD_767_1279,
+  INITIAL_NUMBER_OF_MOVIES_320_480,
+  INITIAL_NUMBER_OF_MOVIES_481_768,
+  INITIAL_NUMBER_OF_MOVIES_769_1280,
+  NUMBER_OF_MOVIES_TO_ADD_320_768,
+  NUMBER_OF_MOVIES_TO_ADD_769_1279,
   NUMBER_OF_MOVIES_TO_ADD_1280,
 } from '../utils/constants';
 
@@ -22,17 +22,17 @@ function useMoviesAmount() {
 
   // Functions:
   function getInitialMoviesAmount(screenWidth) {
-    if (screenWidth < 480) return INITIAL_NUMBER_OF_MOVIES_320_479;
-    else if (screenWidth >= 480 && screenWidth < 768)
-      return INITIAL_NUMBER_OF_MOVIES_480_767;
-    else return INITIAL_NUMBER_OF_MOVIES_767_1280;
+    if (screenWidth <= 480) return INITIAL_NUMBER_OF_MOVIES_320_480;
+    else if (screenWidth > 480 && screenWidth <= 768)
+      return INITIAL_NUMBER_OF_MOVIES_481_768;
+    else return INITIAL_NUMBER_OF_MOVIES_769_1280;
   }
 
   function getNumberOfMoviesToAdd(screenWidth) {
     if (screenWidth >= 1280) return NUMBER_OF_MOVIES_TO_ADD_1280;
-    else if (screenWidth >= 768 && screenWidth < 1280)
-      return NUMBER_OF_MOVIES_TO_ADD_767_1279;
-    else return NUMBER_OF_MOVIES_TO_ADD_320_767;
+    else if (screenWidth > 768 && screenWidth < 1280)
+      return NUMBER_OF_MOVIES_TO_ADD_769_1279;
+    else return NUMBER_OF_MOVIES_TO_ADD_320_768;
   }
 
   function addMoreMovies() {

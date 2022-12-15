@@ -87,7 +87,7 @@
     border-top: 1px solid #424242;;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
 .movies-card__info-wrapper {
     padding-bottom: 25px;
 }
@@ -101,7 +101,7 @@
     }
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 480px) {
     .movies-card__delete-button {
         visibility: visible;
     }

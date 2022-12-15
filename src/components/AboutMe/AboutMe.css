@@ -79,7 +79,7 @@
     flex-shrink: 0;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .about-me {
         padding-right: 50px;
         padding-left: 50px;
@@ -106,7 +106,7 @@
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .about-me {
         padding-right: 14px;
         padding-left: 14px;

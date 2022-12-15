@@ -73,7 +73,7 @@
     color: #FFFFFF;
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .filter-checkbox {
         padding-left: 0;
         padding-right: 0;

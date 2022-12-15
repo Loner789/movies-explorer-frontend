@@ -39,13 +39,13 @@
     flex-direction: column;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .auth-page {
         padding: 232px 30px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .auth-page {
         padding-top: 56px;
         padding-bottom: 30px;

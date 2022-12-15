@@ -21,14 +21,14 @@
     }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .movies-cardlist {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .movies-cardlist {
         padding-left: 10px;
         padding-right: 10px;
@@ -42,7 +42,7 @@
 
 }
 
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 480px) {
     .movies-cardlist__container {
         padding-top: 50px;
         gap: 34px;

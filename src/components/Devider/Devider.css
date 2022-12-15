@@ -10,14 +10,14 @@
     align-items: center;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 1024px) {
     .devider {
         padding-left: 30px;
         padding-right: 30px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 768px) {
     .devider {
         padding-left: 10px;
         padding-right: 10px;
