@@ -101,7 +101,7 @@ function Profile(props) {
             classNameModifier='form-input-error_place_profile'
             errorMessage={errors.email}
           />
-          <FormDevider>
+          <FormDevider classNameModifier='form-devider_place_profile'>
             <Message
               message='Профиль успешно обновлен!'
               currentPath={currentPath}

@@ -12,9 +12,8 @@ function MoviesCardList(props) {
     moviesAmount,
     onMovieLike,
     onMovieDelete,
-    isLiked,
   } = props;
-console.log(movies);
+
   // Functions:
   function calculateDuration(movie) {
     return parseInt(movie.duration / 3600) > 0 ?
@@ -43,11 +42,11 @@ console.log(movies);
                 director={movie.director || 'unknown'}
                 duration={movie.duration}
                 durationForCard={calculateDuration(movie)}
+                isLiked={movie.isLiked}
                 currentPath={currentPath}
                 moviesAmount={moviesAmount}
                 onMovieLike={onMovieLike}
                 onMovieDelete={onMovieDelete}
-                isLiked={isLiked}
                 index={movies.indexOf(movie)}
               />
             );

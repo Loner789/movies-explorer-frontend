@@ -95,7 +95,7 @@ function Register(props) {
         classNameModifier='form-input-error_place_auth'
         errorMessage={errors.password}
       />
-      <FormDevider>
+      <FormDevider classNameModifier='form-devider_place_register'>
         <ErrorMessage errorMessage={errorMessage} />
       </FormDevider>
       <AuthButtons

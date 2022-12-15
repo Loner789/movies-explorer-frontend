@@ -1,10 +1,10 @@
 // IMPORTS:
 import './Header.css';
 import React from 'react';
-import logo from '../../images/logo.svg';
+import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 import NavTab from '../NavTab/NavTab';
-import { Link, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
 // HEADER COMPONENT:
 function Header(props) {
@@ -18,9 +18,7 @@ function Header(props) {
 
   return isVisible ? (
     <header className='header'>
-      <Link to='/' target='blank'>
-        <img src={logo} alt='Логотип.' className='header__logo' />
-      </Link>
+      <Logo />
       <div className='header__nav-wrapper'>
         <Routes>
           <Route path='/' element={<NavTab />} />

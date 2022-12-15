@@ -22,7 +22,8 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const currentPath = location.pathname;
-  const [currentUser, setCurrentUser] = useState({});
+  // Change after review
+  const [currentUser, setCurrentUser] = useState({name: 'Виталий', email: 'email@email.com'});
   const [isBurgerPopupOpen, setIsBurgerPopupOpen] = useState(false);
   const [isChangingClicked, setIsChangingClicked] = useState(false);
   const [isShortFilm, setIsShortFilm] = useState(false);
@@ -53,13 +54,14 @@ function App() {
   }
 
   function handleProfileChange(name, email) {
-    console.log(name, email);
     setIsChangingClicked(false);
     setIsProfileUpdated(true);
+    setCurrentUser(name, email);
   }
 
   function handleProfileEdit() {
     setIsChangingClicked(true);
+    setIsProfileUpdated(false);
   }
 
   function handleLogout() {
@@ -67,8 +69,8 @@ function App() {
     navigate('/');
   }
 
-  function handleMovieLikeClick() {
-    console.log('Like!');
+  function handleMovieLikeClick(props) {
+    console.log('Click!');
   }
 
   function handleMovieDeleteClick() {

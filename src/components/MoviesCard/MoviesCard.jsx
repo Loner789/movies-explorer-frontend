@@ -1,7 +1,7 @@
 // IMPORTS:
 import './MoviesCard.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { ExternalLink } from 'react-external-link';
 
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCard(props) {
@@ -29,11 +29,11 @@ function MoviesCard(props) {
 
   // Functions:
   function handleLikeClick() {
-    onMovieLike();
+    onMovieLike(props);
   }
 
   function handleDeleteClick() {
-    onMovieDelete();
+    onMovieDelete(props);
   }
 
   return (
@@ -42,10 +42,11 @@ function MoviesCard(props) {
         index >= moviesAmount ? 'movies-card_hidden' : ''
       }`}
     >
-      <Link
-        to={{ pathname: trailerLink }}
-        target='_blank'
+      <ExternalLink
         className='movies-card__trailer-link'
+        rel='noreferrer'
+        href={trailerLink}
+        target='_blank'
       >
         <img
           src={image}
@@ -53,7 +54,7 @@ function MoviesCard(props) {
           className='movies-card__image'
           id={movieId}
         />
-      </Link>
+      </ExternalLink>
       <div className='movies-card__info-wrapper'>
         <h3 className='movies-card__name'>{nameRU}</h3>
         <button

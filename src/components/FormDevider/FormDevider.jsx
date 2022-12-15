@@ -5,10 +5,10 @@ import React from 'react';
 // DEVIDER COMPONENT:
 function FormDevider(props) {
   // Constants:
-  const { children } = props;
+  const { children, classNameModifier } = props;
 
   return ( 
-    <div className='form-devider'>
+    <div className={`form-devider ${classNameModifier}`}>
         {children}
     </div>
    );

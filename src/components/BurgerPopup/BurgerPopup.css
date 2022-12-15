@@ -110,6 +110,10 @@
     border-radius: 40px;
 }
 
+.burger-popup__profile-link:hover {
+    outline: 1px solid #FFFFFF;
+}
+
 @media screen and (max-width: 413px) {
     .burger-popup__container {
         width: 100%;

@@ -22,6 +22,11 @@
     border: none;
 }
 
+.form-input-label_place_profile:hover {
+    outline: 1px solid black;
+    border-bottom: 1px solid #424242;
+}
+
 .form-input-label_place_auth {
     font-weight: 400;
     font-size: 10px;
@@ -64,3 +69,6 @@
     font-size: 13px;
 }
 
+.form-input_place_auth:hover {
+    outline: 1px solid #FFFFFF;
+}

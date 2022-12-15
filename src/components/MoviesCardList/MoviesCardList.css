@@ -17,7 +17,6 @@
 
 @media screen and (max-width: 1279px) {
     .movies-cardlist__container {
-        gap: 30px;
         grid-template-columns: repeat(3, 1fr);
     }
 }
@@ -37,8 +36,8 @@
 
     .movies-cardlist__container {
         padding-top: 50px;
-        gap: 34px;
         grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
 
 }

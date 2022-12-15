@@ -99,7 +99,9 @@
     .movies-card__duration {
         font-size: 10px;
     }
+}
 
+@media screen and (max-width: 479px) {
     .movies-card__delete-button {
         visibility: visible;
     }
