@@ -14,19 +14,19 @@ function MoviesCardList(props) {
     onMovieDelete,
     isLiked,
   } = props;
-
+console.log(movies);
   // Functions:
   function calculateDuration(movie) {
-    return parseInt(movie.duration / 60) > 0 ?
-      `${parseInt(movie.duration / 60)}ч ${movie.duration % 60}м` :
-      `${movie.duration % 60}м`;
+    return parseInt(movie.duration / 3600) > 0 ?
+      `${parseInt(movie.duration / 3600)}ч ${parseInt((movie.duration % 3600) / 60)}м` :
+      `${parseInt((movie.duration % 3600) / 60)}м`;
   }
 
   return (
     <section className='movies-cardlist' aria-label='Блок с фильмами.'>
       <ul className='movies-cardlist__container'>
         {movies &&
-          movies.forEach((movie) => {
+          movies.map((movie) => {
             return (
               <MoviesCard
                 key={movie.id}

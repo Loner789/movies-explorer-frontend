@@ -13,6 +13,8 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import BurgerPopup from '../BurgerPopup/BurgerPopup';
+// Remove after review
+import { initialMovies } from '../../utils/initialCards';
 
 // BASE COMPONENT OF APPLICATION:
 function App() {
@@ -30,7 +32,6 @@ function App() {
   const [isProfileUpdated, setIsProfileUpdated] = useState(false);
   const [isFirstVisit, setIsFirstVisit] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
-  // const [loggedIn, setLoggedIn] = useState(false);
 
   // Functions:
   function handleBurgerButtonClick() {
@@ -93,14 +94,11 @@ function App() {
   }
 
   // Side-effects:
-  useEffect(
-    (_) => {
-      if (currentPath !== '/profile' && isProfileUpdated) {
-        setIsProfileUpdated(false);
-      }
-    },
-    [currentPath]
-  );
+  useEffect(() => {
+    if (currentPath !== '/profile' && isProfileUpdated) {
+      setIsProfileUpdated(false);
+    }
+  }, [currentPath]);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -112,7 +110,8 @@ function App() {
             path='/movies'
             element={
               <Movies
-                movies={movies}
+                // Change after review
+                movies={initialMovies}
                 currentPath={currentPath}
                 onCheckboxChange={handleMoviesCheckboxChange}
                 onSearch={handleMoviesSearchForm}
@@ -127,7 +126,8 @@ function App() {
             path='/saved-movies'
             element={
               <SavedMovies
-                movies={savedMovies}
+              // Change after review
+                movies={initialMovies}
                 currentPath={currentPath}
                 onCheckboxChange={handleSavedMoviesCheckboxChange}
                 onSearch={handleSavedMoviesSearchForm}

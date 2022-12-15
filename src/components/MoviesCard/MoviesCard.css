@@ -4,6 +4,10 @@
     max-width: 100%;
 }
 
+.movies-card_hidden {
+    display: none;
+}
+
 .movies-card__trailer-link {
     margin: 0;
     padding: 0;
@@ -94,5 +98,9 @@
 
     .movies-card__duration {
         font-size: 10px;
+    }
+
+    .movies-card__delete-button {
+        visibility: visible;
     }
 }
