@@ -1,0 +1,124 @@
+.promo {
+    margin: -75px 0 0;
+    padding: 0 70px 75px;
+    width: 100%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    background-color: #073042;
+    background-image: url(../../images/planet-image.svg);
+    background-size: 310px 304px;
+    background-position: right 70px top 150px;
+    background-repeat: no-repeat;
+    box-sizing: border-box;
+}
+
+.promo__text {
+    margin: 0;
+    padding: 149px 0 0;
+    max-width: 600px;
+}
+
+.promo__title {
+    margin: 0;
+    padding: 0 0 36px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    color: #FFFFFF;
+}
+
+.promo__subtitle {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    mix-blend-mode: normal;
+    opacity: 0.5;
+}
+
+.promo__button {
+    margin: 146px 0 0;
+    padding: 0;
+    width: 129px;
+    height: 36px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.promo__button:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 1024px) {
+    .promo {
+        padding-left: 30px;
+        padding-right: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: center top 214px;
+    }
+
+    .promo__text {
+        margin-top: 566px;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .promo__title {
+        padding-bottom: 22px;
+        font-size: 40px;
+        line-height: 1.25;
+        text-align: center;
+    }
+
+    .promo__subtitle {
+        max-width: 260px;
+        text-align: center;
+    }
+
+    .promo__button {
+        margin-top: 92px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .promo {
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-bottom: 30px;
+        background-size: 210px 206px;
+        background-position: center top 144px;
+    }
+
+    .promo__text {
+        margin-top: 394px;
+    }
+
+    .promo__title {
+        padding-bottom: 24px;
+        font-size: 30px;
+        line-height: 1.27;
+    }
+
+    .promo__button {
+        margin-top: 80px;
+    }
+}

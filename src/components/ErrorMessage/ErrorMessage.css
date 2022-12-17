@@ -1,0 +1,16 @@
+.error-message {
+    margin: 0;
+    padding: 0 0 20px;
+    max-width: 100%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.22;
+    text-align: center;
+    color: #FF004C;
+    align-self: flex-end;
+}
+
+.error-message_hidden {
+    display: none;
+}

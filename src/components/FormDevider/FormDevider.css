@@ -1,0 +1,42 @@
+.form-devider {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-devider_place_profile {
+    min-height: 191px;
+    align-items: center;
+}
+
+.form-devider_place_register {
+    min-height: 69px;
+    align-items: flex-end;
+}
+
+.form-devider_place_login {
+    min-height: 159px;
+    align-items: flex-end;
+}
+
+@media screen and (max-width: 1024px) {
+    .form-devider_place_profile {
+        min-height: 181px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .form-devider_place_profile {
+        min-height: 350px;
+    }
+
+    .form-devider_place_register {
+        min-height: 157px;
+    }
+
+    .form-devider_place_login {
+        min-height: 247px;
+    }
+}

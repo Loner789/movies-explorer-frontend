@@ -1,0 +1,25 @@
+.devider {
+    margin: 0;
+    padding: 50px 70px 80px;
+    width: 100%;
+    min-height: 140px;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 1024px) {
+    .devider {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .devider {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

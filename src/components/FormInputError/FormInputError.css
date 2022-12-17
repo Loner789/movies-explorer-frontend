@@ -1,0 +1,21 @@
+.form-input-error {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: inline-block;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    color: #EE3465;
+}
+
+.form-input-error_place_profile {
+    min-height: 14px;
+}
+
+.form-input-error_place_auth {
+    padding-top: 8px;
+    min-height: 20px;
+}

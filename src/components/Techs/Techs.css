@@ -1,0 +1,142 @@
+.techs {
+    margin: 0;
+    padding: 0 70px;
+    width: 100%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    background: #272727;
+}
+
+.techs__wrapper {
+    margin: 0;
+    padding: 90px 0 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.techs__subtitle {
+    margin: 0;
+    padding: 0 0 26px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+.techs__description {
+    margin: 0;
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    text-align: center;
+    letter-spacing: -0.04em;
+    color: #FFFFFF;
+}
+
+.techs__badges-container {
+    margin: 0;
+    padding: 100px 0 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.techs__badge {
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.techs__badge_type_html {
+    background-image: url(../../images/html-icon.svg);
+}
+
+.techs__badge_type_css {
+    background-image: url(../../images/css-icon.svg);
+}
+
+.techs__badge_type_js {
+    background-image: url(../../images/js-icon.svg);
+}
+
+.techs__badge_type_react {
+    background-image: url(../../images/react-icon.svg);
+}
+
+.techs__badge_type_git {
+    background-image: url(../../images/git-icon.svg);
+}
+
+.techs__badge_type_express {
+    background-image: url(../../images/express-icon.svg);
+}
+
+.techs__badge_type_mongo {
+    background-image: url(../../images/mongo-icon.svg);
+}
+
+@media screen and (max-width: 1024px) {
+    .techs {
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+    .techs__wrapper {
+        padding-top: 80px;
+        padding-bottom: 90px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .techs__subtitle {
+        padding-bottom: 22px;
+    }
+
+    .techs__description {
+        max-width: 460px;
+        font-size: 12px;
+    }
+
+    .techs__badges-container {
+        padding-top: 83px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .techs {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .techs__wrapper {
+        padding-top: 60px;
+        padding-bottom: 70px;
+    }
+
+    .techs__subtitle {
+        font-size: 30px;
+        padding-bottom: 24px;
+    }
+
+    .techs__description {
+        font-size: 11px;
+    }
+
+    .techs__badges-container {
+        padding-top: 50px;
+        padding-left: 71px;
+        padding-right: 71px;
+        flex-wrap: wrap;
+    }
+}

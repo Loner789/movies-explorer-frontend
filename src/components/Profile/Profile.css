@@ -1,0 +1,120 @@
+.profile {
+    margin: 0;
+    padding: 60px 70px 70px;
+    width: 100%;
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.profile__container {
+    margin: 0;
+    padding: 0;
+    width: 410px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__title {
+    margin: 0;
+    padding: 0 0 108px;
+    width: 100%;
+    max-width: 410px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.profile__form {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile__buttons {
+    margin: 0;
+    padding: 0;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.profile__button {
+    padding: 0;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.2;
+    text-align: center;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.profile__button_disactive {
+    display: none;
+}
+
+.profile__button:hover {
+    opacity: 0.7;
+}
+
+.profile__button_type_edit {
+    color: #FFFFFF;
+}
+
+.profile__button_type_leave {
+    color: #EE3465;
+}
+
+.profile__button_type_save {
+    height: 45px;
+    justify-content: center;
+    align-items: center;
+    background: #4285F4;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.profile__button_type_save:hover {
+    opacity: 0.8;
+}
+
+.profile__button_type_save:disabled {
+    background-color: #424242;
+    opacity: 0.6;
+}
+
+@media screen and (max-width: 1024px) {
+    .profile {
+        padding: 222px 30px 269px;
+    }
+
+    .profile__title {
+        padding-bottom: 81px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile {
+        padding-top: 56px;
+        padding-bottom: 40px;
+    }
+
+    .profile__title {
+        padding-bottom: 65px;
+    }
+}
