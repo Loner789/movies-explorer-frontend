@@ -5,7 +5,7 @@ import { Navigate } from 'react-router-dom';
 // PROTECTED-ROUTE COMPONENT:
 function ProtectedRoute({ children }) {
   return (
-    <>{localStorage.loggedIn === 'true' ? children : <Navigate to='./' />}</>
+    <>{localStorage.loggedIn === 'true' ? children : <Navigate to='/' />}</>
   );
 }
 

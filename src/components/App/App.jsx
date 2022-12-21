@@ -94,41 +94,45 @@ function App() {
   }
 
   function setCurrentUserInfo() {
-    const token = localStorage.getItem('token');
+    if (localStorage.token) {
+      const token = localStorage.getItem('token');
 
-    setErrorMessage('');
+      setErrorMessage('');
 
-    if (token) {
+      if (token) {
+        mainApi
+          .getUserInfo(localStorage.token)
+          .then((data) => {
+            setCurrentUser(data);
+            localStorage.setItem('email', data.email);
+          })
+          .catch((err) => {
+            console.log(err);
+            setErrorMessage(DEFAULT_ERROR_MESSAGE);
+          });
+      }
+    }
+  }
+
+  function loadSavedMovies() {
+    if (localStorage.token) {
+      const token = localStorage.getItem('token');
+
+      setErrorMessage('');
+      setIsSavedMoviesShortFilm(false);
+      setIsSavedMoviesSearchStarted(false);
+
       mainApi
-        .getUserInfo(localStorage.token)
+        .getSavedMovies(token)
         .then((data) => {
-          setCurrentUser(data);
-          localStorage.setItem('email', data.email);
+          setSavedMovies(data);
+          setSavedMoviesSearchResult(data);
         })
         .catch((err) => {
           console.log(err);
           setErrorMessage(DEFAULT_ERROR_MESSAGE);
         });
     }
-  }
-
-  function loadSavedMovies() {
-    const token = localStorage.getItem('token');
-
-    setErrorMessage('');
-    setIsSavedMoviesShortFilm(false);
-    setIsSavedMoviesSearchStarted(false);
-
-    mainApi
-      .getSavedMovies(token)
-      .then((data) => {
-        setSavedMovies(data);
-        setSavedMoviesSearchResult(data);
-      })
-      .catch((err) => {
-        console.log(err);
-        setErrorMessage(DEFAULT_ERROR_MESSAGE);
-      });
   }
 
   function loadMovies() {
@@ -431,10 +435,6 @@ function App() {
       setIsLoading(false);
     }
   }
-
-  console.log(isSavedMoviesSearchValid);
-  console.log(isSavedMoviesSearchStarted);
-  console.log(errorMessage);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
