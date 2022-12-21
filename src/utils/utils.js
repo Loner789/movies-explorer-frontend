@@ -9,7 +9,7 @@ const handleResponse = (res) => {
 
 // To filter movies by the name entered in the search bar
 const filterMoviesByName = (movies, name) => {
-  if (!name) return undefined;
+  if (!name) return [];
 
   return movies.filter((movie) =>
     movie.nameRU.toLowerCase().includes(name.toLowerCase())

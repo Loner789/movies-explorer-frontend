@@ -48,10 +48,44 @@ function App() {
     useState(false);
 
   // Side-effects:
-  // useEffect(() => checkToken(), []);
+  useEffect(() => checkToken(), []);
 
   useEffect(() => {
+    if (currentPath !== '/profile' && isProfileUpdated) {
+      setIsProfileUpdated(false);
+    }
+  }, [currentPath]);
+
+  useEffect(() => {
+    if (currentPath === '/movies') {
+      localStorage.isShortFilm === 'true'
+        ? setIsShortFilm(true)
+        : setIsShortFilm(false);
+    }
+  }, [currentPath]);
+
+  // Functions:
+  function checkToken() {
     if (localStorage.token) {
+      mainApi
+        .sendToken(localStorage.token)
+        .then((data) => {
+          data.email === localStorage.getItem('email') && navigate('/movies');
+        })
+        .catch((err) => {
+          console.log(err);
+
+          setErrorMessage('Произошла ошибка');
+        });
+    }
+  }
+
+  function setCurrentUserInfo() {
+    const token = localStorage.getItem('token');
+
+    setErrorMessage('');
+
+    if (token) {
       mainApi
         .getUserInfo(localStorage.token)
         .then((data) => {
@@ -60,23 +94,16 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-
           setErrorMessage('Произошла ошибка');
         });
     }
-  }, []);
+  }
 
-  useEffect(() => {
-    if (localStorage.movies) setMovies(JSON.parse(localStorage.movies));
-    if (localStorage.isShortFilm === 'true') setIsShortFilm(true);
-    if (localStorage.isShortFilm === 'false') setIsShortFilm(false);
-  }, []);
-
-  useEffect(() => {
+  function loadSavedMovies() {
     const token = localStorage.getItem('token');
 
     setErrorMessage('');
-    setIsShortFilm(false);
+    setIsSavedMoviesShortFilm(false);
     setIsSavedMoviesSearchStarted(false);
 
     mainApi
@@ -88,40 +115,14 @@ function App() {
         console.log(err);
         setErrorMessage('Произошла ошибка');
       });
-  }, []);
+  }
 
-  useEffect(() => {
-    if (currentPath !== '/profile' && isProfileUpdated) {
-      setIsProfileUpdated(false);
-    }
-  }, [currentPath]);
-
-  useEffect(() => {
-    if (currentPath === '/movies') {
-      if (localStorage.isShortFilm === 'true') setIsShortFilm(true);
-      if (localStorage.isShortFilm === 'false') setIsShortFilm(false);
-    }
-  }, [currentPath]);
-
-  // Functions:
-  // function checkToken() {
-  //   if (localStorage.token) {
-  //     mainApi
-  //       .sendToken(localStorage.token)
-  //       .then((data) => {
-  //         data.email === localStorage.getItem('email') && navigate('/movies');
-
-  //         // if (data.email === localStorage.getItem('email')) {
-  //         //   navigate('/movies');
-  //         // }
-  //       })
-  //       .catch((err) => {
-  //         console.log(err);
-
-  //         setErrorMessage('Произошла ошибка');
-  //       });
-  //   }
-  // }
+  function loadMovies() {
+    if (localStorage.movies) setMovies(JSON.parse(localStorage.movies));
+    localStorage.isShortFilm === 'true'
+      ? setIsShortFilm(true)
+      : setIsShortFilm(false);
+  }
 
   function handleBurgerButtonClick() {
     setIsBurgerPopupOpen(true);
@@ -136,9 +137,7 @@ function App() {
 
     return mainApi
       .register(name, email, password)
-      .then((data) => {
-        // setIsRegistred(true);
-        // console.log(data);
+      .then(() => {
         navigate('/signin');
       })
       .catch((err) => {
@@ -446,63 +445,66 @@ function App() {
           <Route
             path='/movies'
             element={
-              <ProtectedRoute>
-                <Movies
-                  movies={movies}
-                  isShortFilm={isShortFilm}
-                  isSearchStarted={isSearchStarted}
-                  setIsSearchStarted={setIsSearchStarted}
-                  isSearchValid={isSearchValid}
-                  setIsSearchValid={setIsSearchValid}
-                  currentPath={currentPath}
-                  onCheckboxChange={handleMoviesCheckboxChange}
-                  onSearch={handleMoviesSearch}
-                  isLoading={isLoading}
-                  isFirstVisit={isFirstVisit}
-                  onMovieLike={handleMovieLikeToggle}
-                  errorMessage={errorMessage}
-                />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Movies
+                movies={movies}
+                isShortFilm={isShortFilm}
+                isSearchStarted={isSearchStarted}
+                setIsSearchStarted={setIsSearchStarted}
+                isSearchValid={isSearchValid}
+                setIsSearchValid={setIsSearchValid}
+                currentPath={currentPath}
+                onCheckboxChange={handleMoviesCheckboxChange}
+                onSearch={handleMoviesSearch}
+                isLoading={isLoading}
+                isFirstVisit={isFirstVisit}
+                onMovieLike={handleMovieLikeToggle}
+                errorMessage={errorMessage}
+                loadMovies={loadMovies}
+              />
+              // </ProtectedRoute>
             }
           />
 
           <Route
             path='/saved-movies'
             element={
-              <ProtectedRoute>
-                <SavedMovies
-                  movies={savedMovies}
-                  currentPath={currentPath}
-                  isLoading={isLoading}
-                  onCheckboxChange={handleSavedMoviesCheckboxChange}
-                  onSearch={handleSavedMoviesSearch}
-                  isSearchStarted={isSavedMoviesSearchStarted}
-                  isShortFilm={isSavedMoviesShortFilm}
-                  setIsSearchStarted={setIsSavedMoviesSearchStarted}
-                  savedMoviesSearchResult={savedMoviesSearchResult}
-                  onMovieDelete={handleMovieDelete}
-                  isSearchValid={isSavedMoviesSearchValid}
-                  setIsSearchValid={setIsSavedMoviesSearchValid}
-                  errorMessage={errorMessage}
-                />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <SavedMovies
+                movies={savedMovies}
+                currentPath={currentPath}
+                isLoading={isLoading}
+                onCheckboxChange={handleSavedMoviesCheckboxChange}
+                onSearch={handleSavedMoviesSearch}
+                isSearchStarted={isSavedMoviesSearchStarted}
+                isShortFilm={isSavedMoviesShortFilm}
+                setIsSearchStarted={setIsSavedMoviesSearchStarted}
+                savedMoviesSearchResult={savedMoviesSearchResult}
+                onMovieDelete={handleMovieDelete}
+                isSearchValid={isSavedMoviesSearchValid}
+                setIsSearchValid={setIsSavedMoviesSearchValid}
+                errorMessage={errorMessage}
+                loadSavedMovies={loadSavedMovies}
+              />
+              // </ProtectedRoute>
             }
           />
 
           <Route
             path='/profile'
             element={
-              <ProtectedRoute>
-                <Profile
-                  onProfileChange={handleProfileChange}
-                  onProfileEdit={handleProfileEdit}
-                  onLogout={handleLogout}
-                  currentPath={currentPath}
-                  isChangingClicked={isChangingClicked}
-                  isProfileUpdated={isProfileUpdated}
-                  errorMessage={errorMessage}
-                />
-              </ProtectedRoute>
+              // <ProtectedRoute>
+              <Profile
+                onProfileChange={handleProfileChange}
+                onProfileEdit={handleProfileEdit}
+                onLogout={handleLogout}
+                currentPath={currentPath}
+                isChangingClicked={isChangingClicked}
+                isProfileUpdated={isProfileUpdated}
+                errorMessage={errorMessage}
+                setCurrentUserInfo={setCurrentUserInfo}
+              />
+              // </ProtectedRoute>
             }
           />
 

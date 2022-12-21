@@ -21,6 +21,7 @@ function Profile(props) {
     isChangingClicked,
     isProfileUpdated,
     errorMessage,
+    setCurrentUserInfo,
   } = props;
   const {
     values,
@@ -33,11 +34,7 @@ function Profile(props) {
   } = useFormAndValidation({});
 
   // Side-effects:
-  useEffect(() => {
-    resetForm();
-    setValues({ name: currentUser.name, email: currentUser.email });
-    setIsValid(true);
-  }, []);
+  useEffect(() => setCurrentUserInfo(), []);
 
   useEffect(() => {
     resetForm();

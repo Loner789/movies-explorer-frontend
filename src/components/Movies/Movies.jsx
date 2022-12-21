@@ -1,6 +1,6 @@
 // IMPORTS:
 import './Movies.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -26,8 +26,12 @@ function Movies(props) {
     isFirstVisit,
     onMovieLike,
     errorMessage,
+    loadMovies,
   } = props;
   const { moviesAmount, addMoreMovies } = useMoviesAmount();
+
+  // Side-effects:
+  useEffect(() => loadMovies(), []);
 
   return (
     <main className='movies'>
@@ -52,7 +56,7 @@ function Movies(props) {
           moviesAmount={moviesAmount}
           onClick={addMoreMovies}
         />
-        {isFirstVisit && !localStorage.movies && (
+        {!errorMessage && isFirstVisit && !localStorage.movies && (
           <Message
             currentPath={currentPath}
             movies={movies}

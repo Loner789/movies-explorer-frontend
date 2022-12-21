@@ -1,6 +1,6 @@
 // IMPORTS:
 import './SavedMovies.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -23,9 +23,12 @@ function SavedMovies(props) {
     onMovieDelete,
     setIsSearchValid,
     errorMessage,
+    loadSavedMovies,
   } = props;
-
   const moviesList = isSearchStarted ? savedMoviesSearchResult : movies;
+
+  // Side-effects:
+  useEffect(() => loadSavedMovies(), []);
 
   return (
     <main className='saved-movies' aria-label='Сохранённые фильмы.'>
