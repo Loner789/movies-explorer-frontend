@@ -51,7 +51,7 @@ function Profile(props) {
 
     const { name, email } = values;
 
-    onProfileChange({ name: name, email: email });
+    onProfileChange(name, email);
   }
 
   return (

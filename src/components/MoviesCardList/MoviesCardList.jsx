@@ -2,23 +2,19 @@
 import './MoviesCardList.css';
 import React from 'react';
 import MoviesCard from '../MoviesCard/MoviesCard';
+import { MOVIE_CARD_IMAGE_URL } from '../../utils/constants';
 
 // MOVIES-CARDLIST COMPONENT:
 function MoviesCardList(props) {
   // Constants:
-  const {
-    movies,
-    currentPath,
-    moviesAmount,
-    onMovieLike,
-    onMovieDelete,
-  } = props;
+  const { movies, currentPath, moviesAmount, onMovieLike, onMovieDelete } =
+    props;
 
   // Functions:
   function calculateDuration(movie) {
-    return parseInt(movie.duration / 3600) > 0 ?
-      `${parseInt(movie.duration / 3600)}ч ${parseInt((movie.duration % 3600) / 60)}м` :
-      `${parseInt((movie.duration % 3600) / 60)}м`;
+    return parseInt(movie.duration / 60) > 0
+      ? `${parseInt(movie.duration / 60)}ч ${parseInt(movie.duration % 60)}м`
+      : `${parseInt(movie.duration % 60)}м`;
   }
 
   return (
@@ -28,14 +24,22 @@ function MoviesCardList(props) {
           movies.map((movie) => {
             return (
               <MoviesCard
-                key={movie.id}
-                _id={movie.id}
-                movieId={movie.id}
+                key={currentPath === '/movies' ? movie.id : movie._id}
+                _id={currentPath === '/movies' ? movie.id : movie._id}
+                movieId={currentPath === '/movies' ? movie.id : movie._id}
                 trailerLink={movie.trailerLink}
-                image={movie.image}
+                image={
+                  currentPath === '/movies'
+                    ? `${MOVIE_CARD_IMAGE_URL}${movie.image.url}`
+                    : movie.image
+                }
                 nameRU={movie.nameRU}
                 nameEN={movie.nameEN}
-                thumbnail={movie.thumbnail}
+                thumbnail={
+                  currentPath === '/movies'
+                    ? `${MOVIE_CARD_IMAGE_URL}${movie.image.formats.thumbnail.url}`
+                    : movie.thumbnail
+                }
                 country={movie.country || 'unknown'}
                 year={movie.year || 'unknown'}
                 description={movie.description || 'unknown'}

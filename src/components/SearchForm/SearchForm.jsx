@@ -1,21 +1,37 @@
 // IMPORTS:
 import './SearchForm.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 
 // SEARCH-FORM COMPONENT:
 function SearchForm(props) {
   // Constants:
-  const { onCheckboxChange, onSearch } = props;
-  const { values, handleChange, isValid } = useFormAndValidation();
+  const {
+    currentPath,
+    isShortFilm,
+    onCheckboxChange,
+    onSearch,
+    setIsSearchStarted,
+    setIsSearchValid,
+  } = props;
+  const { values, handleChange, isValid, setValues } = useFormAndValidation();
 
   // Functions:
   function handleSubmit(e) {
     e.preventDefault();
 
+    setIsSearchStarted(true);
+    setIsSearchValid(isValid);
     isValid && onSearch(values.movie);
   }
+
+  // Side-effects:
+  useEffect(() => {
+    if (currentPath === '/movies') {
+      setValues({ movie: localStorage.searchRequest });
+    }
+  }, []);
 
   return (
     <section className='search-form' aria-label='Раздел поиска фильмов.'>
@@ -43,7 +59,10 @@ function SearchForm(props) {
               aria-label='Клопка поиска.'
             />
           </div>
-          <FilterCheckbox onCheckboxChange={onCheckboxChange} />
+          <FilterCheckbox
+            isShortFilm={isShortFilm}
+            onCheckboxChange={onCheckboxChange}
+          />
         </form>
       </div>
     </section>

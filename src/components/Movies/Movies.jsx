@@ -7,7 +7,6 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Devider from '../Devider/Devider';
 import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useMoviesAmount from '../../hooks/useMoviesAmount';
 
 // MOVIES COMPONENT:
@@ -15,33 +14,45 @@ function Movies(props) {
   // Constants:
   const {
     movies,
+    isShortFilm,
+    isSearchStarted,
+    setIsSearchStarted,
+    isSearchValid,
+    setIsSearchValid,
     currentPath,
     onCheckboxChange,
     onSearch,
     isLoading,
     isFirstVisit,
     onMovieLike,
-    errorMessage
+    errorMessage,
   } = props;
   const { moviesAmount, addMoreMovies } = useMoviesAmount();
 
   return (
     <main className='movies'>
-      <SearchForm onCheckboxChange={onCheckboxChange} onSearch={onSearch} />
+      <SearchForm
+        currentPath={currentPath}
+        isShortFilm={isShortFilm}
+        onCheckboxChange={onCheckboxChange}
+        onSearch={onSearch}
+        setIsSearchStarted={setIsSearchStarted}
+        setIsSearchValid={setIsSearchValid}
+      />
       <MoviesCardList
         movies={movies}
         currentPath={currentPath}
         moviesAmount={moviesAmount}
         onMovieLike={onMovieLike}
       />
-      <Preloader isLoading={isLoading} />
       <Devider>
+        <Preloader isLoading={isLoading} />
         <ButtonMore
           movies={movies}
           moviesAmount={moviesAmount}
           onClick={addMoreMovies}
         />
-        {isFirstVisit && (
+        {isFirstVisit && !localStorage.movies && (
           <Message
             currentPath={currentPath}
             movies={movies}
@@ -50,16 +61,33 @@ function Movies(props) {
             errorMessage={errorMessage}
           />
         )}
-        {!isFirstVisit && movies.length === 0 && (
+        {!errorMessage && !isFirstVisit && isSearchValid && movies.length === 0 && (
           <Message
             currentPath={currentPath}
             movies={movies}
             isLoading={isLoading}
-            message='По вашему запросу ничего не найдено'
+            message='Ничего не найдено'
             errorMessage={errorMessage}
           />
         )}
-        <ErrorMessage errorMessage={errorMessage} />
+        {!errorMessage && !isSearchValid && isSearchStarted && (
+          <Message
+            currentPath={currentPath}
+            movies={movies}
+            isLoading={isLoading}
+            message='Нужно ввести ключевое слово'
+            errorMessage={errorMessage}
+          />
+        )}
+        {errorMessage && (
+          <Message
+            currentPath={currentPath}
+            movies={movies}
+            isLoading={isLoading}
+            message={errorMessage}
+            errorMessage={errorMessage}
+          />
+        )}
       </Devider>
     </main>
   );

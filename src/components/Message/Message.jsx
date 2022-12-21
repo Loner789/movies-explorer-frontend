@@ -14,7 +14,7 @@ function Message(props) {
     errorMessage,
   } = props;
   const moviesMessageClassName = `message ${
-    (movies.length > 0 || isLoading || errorMessage) ? 'message_hidden' : ''
+    (movies.length > 0 || isLoading) ? 'message_hidden' : ''
   }`;
   const profileMessageClassName = `message ${
     (!isProfileUpdated || errorMessage) ? 'message_hidden' : ''

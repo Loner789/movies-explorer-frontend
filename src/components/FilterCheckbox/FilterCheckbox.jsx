@@ -5,7 +5,7 @@ import React from 'react';
 // FILTER-CHECKBOX COMPONENT:
 function FilterCheckbox(props) {
   // Constants:
-  const { onCheckboxChange } = props;
+  const { isShortFilm, onCheckboxChange } = props;
 
   return (
     <div className='filter-checkbox'>
@@ -14,6 +14,7 @@ function FilterCheckbox(props) {
           type='checkbox'
           className='filter-checkbox__input'
           id='toggler'
+          checked={isShortFilm}
           onChange={onCheckboxChange}
         />
         <span className='filter-checkbox__cover'></span>
