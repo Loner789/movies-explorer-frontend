@@ -94,34 +94,32 @@ function App() {
   }
 
   function setCurrentUserInfo() {
-    if (localStorage.token) {
-      const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-      setErrorMessage('');
+    setErrorMessage('');
 
-      if (token) {
-        mainApi
-          .getUserInfo(localStorage.token)
-          .then((data) => {
-            setCurrentUser(data);
-            localStorage.setItem('email', data.email);
-          })
-          .catch((err) => {
-            console.log(err);
-            setErrorMessage(DEFAULT_ERROR_MESSAGE);
-          });
-      }
+    if (token) {
+      mainApi
+        .getUserInfo(localStorage.token)
+        .then((data) => {
+          setCurrentUser(data);
+          localStorage.setItem('email', data.email);
+        })
+        .catch((err) => {
+          console.log(err);
+          setErrorMessage(DEFAULT_ERROR_MESSAGE);
+        });
     }
   }
 
   function loadSavedMovies() {
-    if (localStorage.token) {
-      const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
 
-      setErrorMessage('');
-      setIsSavedMoviesShortFilm(false);
-      setIsSavedMoviesSearchStarted(false);
-
+    setErrorMessage('');
+    setIsSavedMoviesShortFilm(false);
+    setIsSavedMoviesSearchStarted(false);
+    
+    if (token) {
       mainApi
         .getSavedMovies(token)
         .then((data) => {
