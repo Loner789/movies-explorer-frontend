@@ -44,7 +44,7 @@ function App() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSearchStarted, setIsSearchStarted] = useState(false);
   const [isSearchValid, setIsSearchValid] = useState(false);
-  const [isSavedMovieSearchValid, setIsSavedMoviesSearchValid] =
+  const [isSavedMoviesSearchValid, setIsSavedMoviesSearchValid] =
     useState(false);
 
   // Side-effects:
@@ -229,34 +229,7 @@ function App() {
     navigate('/');
   }
 
-  function removeMovie(movie, token) {
-    const selectedMovie = savedMovies.find(
-      (item) => item.movieId === movie.movieId
-    );
-
-    mainApi
-      .deleteMovie(selectedMovie._id, token)
-      .then((data) => {
-        const updatedMovies = savedMovies.filter(
-          (movie) => movie._id !== data.data._id
-        );
-        setSavedMovies(updatedMovies);
-
-        movies.forEach((movie) => {
-          if (movie.id === data.data.movieId) {
-            movie.isLiked = false;
-          }
-        });
-        setMovies([...movies]);
-        localStorage.setItem('movies', JSON.stringify(movies));
-      })
-      .catch((err) => {
-        console.log(err);
-        setErrorMessage('Произошла ошибка');
-      });
-  }
-
-  function handleMovieLike(props) {
+  function handleMovieLikeToggle(props) {
     setErrorMessage('');
 
     if (!props.isLiked) {
@@ -279,14 +252,57 @@ function App() {
           setErrorMessage('При сохранении фильма произошла ошибка');
         });
     } else {
-      removeMovie(props, localStorage.token);
+      const selectedMovie = savedMovies.find(
+        (item) => item.movieId === props.movieId
+      );
+
+      mainApi
+        .deleteMovie(selectedMovie._id, localStorage.token)
+        .then((data) => {
+          const updatedMovies = savedMovies.filter(
+            (movie) => movie._id !== data.data._id
+          );
+          setSavedMovies(updatedMovies);
+
+          movies.forEach((movie) => {
+            if (movie.id === data.data.movieId) {
+              movie.isLiked = false;
+            }
+          });
+          setMovies([...movies]);
+          localStorage.setItem('movies', JSON.stringify(movies));
+        })
+        .catch((err) => {
+          console.log(err);
+          setErrorMessage('Во время удаления произошла ошибка');
+        });
     }
   }
 
   function handleMovieDelete(props) {
     setErrorMessage('');
 
-    removeMovie(props, localStorage.token);
+    mainApi
+      .deleteMovie(props._id, localStorage.token)
+      .then((data) => {
+        const updatedMovies = savedMovies.filter(
+          (movie) => movie._id !== data.data._id
+        );
+        setSavedMovies(updatedMovies);
+
+        movies.forEach((movie) => {
+          if (movie.id === data.data.movieId) {
+            movie.isLiked = false;
+          }
+        });
+
+        setMovies([...movies]);
+        localStorage.setItem('movies', JSON.stringify(movies));
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrorMessage('Во время удаления произошла ошибка');
+      });
   }
 
   function handleMoviesSearch(request) {
@@ -414,6 +430,7 @@ function App() {
         savedMovies,
         localStorage.savedMoviesSearchRequest
       );
+
       setSavedMoviesSearchResult(foundMovies);
       setIsLoading(false);
     }
@@ -442,7 +459,7 @@ function App() {
                   onSearch={handleMoviesSearch}
                   isLoading={isLoading}
                   isFirstVisit={isFirstVisit}
-                  onMovieLike={handleMovieLike}
+                  onMovieLike={handleMovieLikeToggle}
                   errorMessage={errorMessage}
                 />
               </ProtectedRoute>
@@ -462,9 +479,10 @@ function App() {
                   isSearchStarted={isSavedMoviesSearchStarted}
                   isShortFilm={isSavedMoviesShortFilm}
                   setIsSearchStarted={setIsSavedMoviesSearchStarted}
-                  setIsSearchValid={setIsSavedMoviesSearchValid}
                   savedMoviesSearchResult={savedMoviesSearchResult}
                   onMovieDelete={handleMovieDelete}
+                  isSearchValid={isSavedMoviesSearchValid}
+                  setIsSearchValid={setIsSavedMoviesSearchValid}
                   errorMessage={errorMessage}
                 />
               </ProtectedRoute>

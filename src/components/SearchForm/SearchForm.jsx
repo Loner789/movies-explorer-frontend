@@ -31,6 +31,9 @@ function SearchForm(props) {
     if (currentPath === '/movies') {
       setValues({ movie: localStorage.searchRequest });
     }
+    if (currentPath === '/saved-movies') {
+      setValues({ movie: localStorage.savedMoviesSearchRequest });
+    }
   }, []);
 
   return (
