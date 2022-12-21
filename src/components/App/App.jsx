@@ -123,6 +123,7 @@ function App() {
       .getSavedMovies(token)
       .then((data) => {
         setSavedMovies(data);
+        setSavedMoviesSearchResult(data);
       })
       .catch((err) => {
         console.log(err);
@@ -431,6 +432,10 @@ function App() {
     }
   }
 
+  console.log(isSavedMoviesSearchValid);
+  console.log(isSavedMoviesSearchStarted);
+  console.log(errorMessage);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className='page'>
@@ -441,66 +446,66 @@ function App() {
           <Route
             path='/movies'
             element={
-              // <ProtectedRoute>
-              <Movies
-                movies={movies}
-                isShortFilm={isShortFilm}
-                isSearchStarted={isSearchStarted}
-                setIsSearchStarted={setIsSearchStarted}
-                isSearchValid={isSearchValid}
-                setIsSearchValid={setIsSearchValid}
-                currentPath={currentPath}
-                onCheckboxChange={handleMoviesCheckboxChange}
-                onSearch={handleMoviesSearch}
-                isLoading={isLoading}
-                isFirstVisit={isFirstVisit}
-                onMovieLike={handleMovieLikeToggle}
-                errorMessage={errorMessage}
-                loadMovies={loadMovies}
-              />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <Movies
+                  movies={movies}
+                  isShortFilm={isShortFilm}
+                  isSearchStarted={isSearchStarted}
+                  setIsSearchStarted={setIsSearchStarted}
+                  isSearchValid={isSearchValid}
+                  setIsSearchValid={setIsSearchValid}
+                  currentPath={currentPath}
+                  onCheckboxChange={handleMoviesCheckboxChange}
+                  onSearch={handleMoviesSearch}
+                  isLoading={isLoading}
+                  isFirstVisit={isFirstVisit}
+                  onMovieLike={handleMovieLikeToggle}
+                  errorMessage={errorMessage}
+                  loadMovies={loadMovies}
+                />
+              </ProtectedRoute>
             }
           />
 
           <Route
             path='/saved-movies'
             element={
-              // <ProtectedRoute>
-              <SavedMovies
-                movies={savedMovies}
-                currentPath={currentPath}
-                isLoading={isLoading}
-                onCheckboxChange={handleSavedMoviesCheckboxChange}
-                onSearch={handleSavedMoviesSearch}
-                isSearchStarted={isSavedMoviesSearchStarted}
-                isShortFilm={isSavedMoviesShortFilm}
-                setIsSearchStarted={setIsSavedMoviesSearchStarted}
-                savedMoviesSearchResult={savedMoviesSearchResult}
-                onMovieDelete={handleMovieDelete}
-                isSearchValid={isSavedMoviesSearchValid}
-                setIsSearchValid={setIsSavedMoviesSearchValid}
-                errorMessage={errorMessage}
-                loadSavedMovies={loadSavedMovies}
-              />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <SavedMovies
+                  movies={savedMovies}
+                  currentPath={currentPath}
+                  isLoading={isLoading}
+                  onCheckboxChange={handleSavedMoviesCheckboxChange}
+                  onSearch={handleSavedMoviesSearch}
+                  isSearchStarted={isSavedMoviesSearchStarted}
+                  isShortFilm={isSavedMoviesShortFilm}
+                  setIsSearchStarted={setIsSavedMoviesSearchStarted}
+                  savedMoviesSearchResult={savedMoviesSearchResult}
+                  onMovieDelete={handleMovieDelete}
+                  isSearchValid={isSavedMoviesSearchValid}
+                  setIsSearchValid={setIsSavedMoviesSearchValid}
+                  errorMessage={errorMessage}
+                  loadSavedMovies={loadSavedMovies}
+                />
+              </ProtectedRoute>
             }
           />
 
           <Route
             path='/profile'
             element={
-              // <ProtectedRoute>
-              <Profile
-                onProfileChange={handleProfileChange}
-                onProfileEdit={handleProfileEdit}
-                onLogout={handleLogout}
-                currentPath={currentPath}
-                isChangingClicked={isChangingClicked}
-                isProfileUpdated={isProfileUpdated}
-                errorMessage={errorMessage}
-                setCurrentUserInfo={setCurrentUserInfo}
-              />
-              // </ProtectedRoute>
+              <ProtectedRoute>
+                <Profile
+                  onProfileChange={handleProfileChange}
+                  onProfileEdit={handleProfileEdit}
+                  onLogout={handleLogout}
+                  currentPath={currentPath}
+                  isChangingClicked={isChangingClicked}
+                  isProfileUpdated={isProfileUpdated}
+                  errorMessage={errorMessage}
+                  setCurrentUserInfo={setCurrentUserInfo}
+                />
+              </ProtectedRoute>
             }
           />
 

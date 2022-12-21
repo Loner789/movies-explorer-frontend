@@ -16,6 +16,7 @@ function SavedMovies(props) {
     isLoading,
     isShortFilm,
     setIsSearchStarted,
+    isSearchValid,
     onCheckboxChange,
     onSearch,
     isSearchStarted,
@@ -47,12 +48,21 @@ function SavedMovies(props) {
       />
       <Devider>
         <Preloader isLoading={isLoading} />
-        {!errorMessage && moviesList.length === 0 && (
+        {!errorMessage && isSearchValid && moviesList.length === 0 && (
           <Message
             currentPath={currentPath}
             movies={moviesList}
             isLoading={isLoading}
             message='Ничего не найдено'
+            errorMessage={errorMessage}
+          />
+        )}
+        {!errorMessage && !isSearchValid && isSearchStarted && (
+          <Message
+            currentPath={currentPath}
+            movies={moviesList}
+            isLoading={isLoading}
+            message='Нужно ввести ключевое слово'
             errorMessage={errorMessage}
           />
         )}
