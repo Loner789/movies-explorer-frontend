@@ -21,6 +21,16 @@ import {
   filterMoviesByDuration,
   getErrorCode,
 } from '../../utils/utils';
+import {
+  AUTH_ERROR_MESSAGE,
+  FORBIDDEN_ERROR_MESSAGE,
+  NOT_FOUND_ERROR_MESSAGE,
+  CONFLICT_ERROR_MESSAGE,
+  DEFAULT_ERROR_MESSAGE,
+  MOVIE_SAVE_ERROR_MESSAGE,
+  MOVIE_DELETE_ERROR_MESSAGE,
+  SERVER_ERROR_MESSAGE,
+} from '../../utils/constants';
 
 // BASE COMPONENT OF APPLICATION:
 function App() {
@@ -61,8 +71,11 @@ function App() {
       localStorage.isShortFilm === 'true'
         ? setIsShortFilm(true)
         : setIsShortFilm(false);
+      loadSavedMovies();
     }
   }, [currentPath]);
+
+  useEffect(() => setErrorMessage(''), [currentPath]);
 
   // Functions:
   function checkToken() {
@@ -75,7 +88,7 @@ function App() {
         .catch((err) => {
           console.log(err);
 
-          setErrorMessage('Произошла ошибка');
+          setErrorMessage(DEFAULT_ERROR_MESSAGE);
         });
     }
   }
@@ -94,7 +107,7 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          setErrorMessage('Произошла ошибка');
+          setErrorMessage(DEFAULT_ERROR_MESSAGE);
         });
     }
   }
@@ -113,7 +126,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage('Произошла ошибка');
+        setErrorMessage(DEFAULT_ERROR_MESSAGE);
       });
   }
 
@@ -144,19 +157,12 @@ function App() {
         console.log(err);
 
         const errorCode = getErrorCode(err);
-        if (errorCode === '404')
-          setErrorMessage('Введён неверный логин или пароль');
-        else if (errorCode === '401')
-          setErrorMessage(
-            'При авторизации произошла ошибка. Токен не передан или передан не в том формате'
-          );
-        else if (errorCode === '403')
-          setErrorMessage(
-            'При авторизации произошла ошибка. Передан некорректный токен'
-          );
-        else if (errorCode === '409')
-          setErrorMessage('Пользователь с таким email уже существует');
-        else setErrorMessage('При регистрации пользователя произошла ошибка');
+
+        if (errorCode === '401') setErrorMessage(AUTH_ERROR_MESSAGE);
+        else if (errorCode === '403') setErrorMessage(FORBIDDEN_ERROR_MESSAGE);
+        else if (errorCode === '404') setErrorMessage(NOT_FOUND_ERROR_MESSAGE);
+        else if (errorCode === '409') setErrorMessage(CONFLICT_ERROR_MESSAGE);
+        else setErrorMessage(DEFAULT_ERROR_MESSAGE);
       });
   }
 
@@ -178,17 +184,11 @@ function App() {
         console.log(err);
 
         const errorCode = getErrorCode(err);
-        if (errorCode === '404')
-          setErrorMessage('Введён неверный логин или пароль');
-        else if (errorCode === '401')
-          setErrorMessage(
-            'При авторизации произошла ошибка. Токен не передан или передан не в том формате'
-          );
-        else if (errorCode === '403')
-          setErrorMessage(
-            'При авторизации произошла ошибка. Передан некорректный токен'
-          );
-        else setErrorMessage('При авторизации произошла ошибка');
+
+        if (errorCode === '401') setErrorMessage(AUTH_ERROR_MESSAGE);
+        else if (errorCode === '403') setErrorMessage(FORBIDDEN_ERROR_MESSAGE);
+        else if (errorCode === '404') setErrorMessage(NOT_FOUND_ERROR_MESSAGE);
+        else setErrorMessage(DEFAULT_ERROR_MESSAGE);
       });
   }
 
@@ -205,8 +205,8 @@ function App() {
 
         const errorCode = getErrorCode(err);
         errorCode === '409'
-          ? setErrorMessage('Пользователь с указанным email уже существует')
-          : setErrorMessage('При обновлении профиля произошла ошибка');
+          ? setErrorMessage(CONFLICT_ERROR_MESSAGE)
+          : setErrorMessage(DEFAULT_ERROR_MESSAGE);
       });
   }
 
@@ -248,7 +248,7 @@ function App() {
         .catch((err) => {
           console.log(err);
 
-          setErrorMessage('При сохранении фильма произошла ошибка');
+          setErrorMessage(MOVIE_SAVE_ERROR_MESSAGE);
         });
     } else {
       const selectedMovie = savedMovies.find(
@@ -273,7 +273,7 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          setErrorMessage('Во время удаления произошла ошибка');
+          setErrorMessage(MOVIE_DELETE_ERROR_MESSAGE);
         });
     }
   }
@@ -300,7 +300,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage('Во время удаления произошла ошибка');
+        setErrorMessage(MOVIE_DELETE_ERROR_MESSAGE);
       });
   }
 
@@ -333,9 +333,7 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
-        setErrorMessage(
-          'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-        );
+        setErrorMessage(SERVER_ERROR_MESSAGE);
       })
       .finally(() => setIsLoading(false));
   }
@@ -383,9 +381,7 @@ function App() {
         })
         .catch((err) => {
           console.log(err);
-          setErrorMessage(
-            'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз'
-          );
+          setErrorMessage(SERVER_ERROR_MESSAGE);
         })
         .finally(() => setIsLoading(false));
     }

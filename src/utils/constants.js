@@ -1,4 +1,12 @@
 // Constants:
+const AUTH_ERROR_MESSAGE = 'При авторизации произошла ошибка. Токен не передан или передан не в том формате';
+const FORBIDDEN_ERROR_MESSAGE = 'При авторизации произошла ошибка. Передан некорректный токен';
+const NOT_FOUND_ERROR_MESSAGE = 'Введён неверный логин или пароль';
+const CONFLICT_ERROR_MESSAGE = 'Пользователь с таким email уже существует';
+const DEFAULT_ERROR_MESSAGE = 'Произошла ошибка';
+const MOVIE_SAVE_ERROR_MESSAGE = 'При сохранении фильма произошла ошибка';
+const MOVIE_DELETE_ERROR_MESSAGE = 'При удалении фильма из списка сохранённых фильмов произошла ошибка';
+const SERVER_ERROR_MESSAGE = 'Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз';
 const INITIAL_NUMBER_OF_MOVIES_320_480 = 5;
 const INITIAL_NUMBER_OF_MOVIES_481_768 = 8;
 const INITIAL_NUMBER_OF_MOVIES_769_1280 = 12;
@@ -21,8 +29,15 @@ const moviesApiConfig = {
   }
 };
 
-
 export {
+  AUTH_ERROR_MESSAGE,
+  FORBIDDEN_ERROR_MESSAGE,
+  NOT_FOUND_ERROR_MESSAGE,
+  CONFLICT_ERROR_MESSAGE,
+  DEFAULT_ERROR_MESSAGE,
+  MOVIE_SAVE_ERROR_MESSAGE,
+  MOVIE_DELETE_ERROR_MESSAGE,
+  SERVER_ERROR_MESSAGE,
   INITIAL_NUMBER_OF_MOVIES_320_480,
   INITIAL_NUMBER_OF_MOVIES_481_768,
   INITIAL_NUMBER_OF_MOVIES_769_1280,
