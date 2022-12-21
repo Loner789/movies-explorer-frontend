@@ -8,6 +8,7 @@ import Message from '../Message/Message';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { NAME_PATTERN } from '../../utils/constants';
 
 // PROFILE COMPONENT:
 function Profile(props) {
@@ -77,7 +78,7 @@ function Profile(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.name || ''}
-            pattern='^[a-zA-Zа-яА-Я\s-]+$'
+            pattern={NAME_PATTERN}
             disabled={!isChangingClicked}
           />
           <FormInput

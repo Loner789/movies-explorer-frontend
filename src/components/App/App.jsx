@@ -118,7 +118,7 @@ function App() {
     setErrorMessage('');
     setIsSavedMoviesShortFilm(false);
     setIsSavedMoviesSearchStarted(false);
-    
+
     if (token) {
       mainApi
         .getSavedMovies(token)
@@ -148,30 +148,7 @@ function App() {
     setIsBurgerPopupOpen(false);
   }
 
-  function handleRegister(name, email, password) {
-    setErrorMessage('');
-
-    return mainApi
-      .register(name, email, password)
-      .then(() => {
-        navigate('/signin');
-      })
-      .catch((err) => {
-        console.log(err);
-
-        const errorCode = getErrorCode(err);
-
-        if (errorCode === '401') setErrorMessage(AUTH_ERROR_MESSAGE);
-        else if (errorCode === '403') setErrorMessage(FORBIDDEN_ERROR_MESSAGE);
-        else if (errorCode === '404') setErrorMessage(NOT_FOUND_ERROR_MESSAGE);
-        else if (errorCode === '409') setErrorMessage(CONFLICT_ERROR_MESSAGE);
-        else setErrorMessage(DEFAULT_ERROR_MESSAGE);
-      });
-  }
-
-  function handleLogin(email, password) {
-    setErrorMessage('');
-
+  function authorizeUser(email, password) {
     return mainApi
       .authorize(email, password)
       .then((data) => {
@@ -193,6 +170,32 @@ function App() {
         else if (errorCode === '404') setErrorMessage(NOT_FOUND_ERROR_MESSAGE);
         else setErrorMessage(DEFAULT_ERROR_MESSAGE);
       });
+  }
+
+  function handleRegister(name, email, password) {
+    setErrorMessage('');
+
+    return mainApi
+      .register(name, email, password)
+      .then((data) => {
+        authorizeUser(email, password);
+        setCurrentUser(data);
+      })
+      .catch((err) => {
+        console.log(err);
+
+        const errorCode = getErrorCode(err);
+
+        errorCode === '409'
+          ? setErrorMessage(CONFLICT_ERROR_MESSAGE)
+          : setErrorMessage(DEFAULT_ERROR_MESSAGE);
+      });
+  }
+
+  function handleLogin(email, password) {
+    setErrorMessage('');
+
+    authorizeUser(email, password);
   }
 
   function handleProfileChange(name, email) {
