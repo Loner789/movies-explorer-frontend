@@ -31,14 +31,14 @@ function Profile(props) {
     setValues,
     resetForm,
     setIsValid,
-    setErrors
+    setErrors,
   } = useFormAndValidation({});
 
   // Side-effects:
   // useEffect(() => setCurrentUserInfo(), []);
 
   useEffect(() => {
-    setValues({ name: currentUser.name, email: currentUser.email});
+    setValues({ name: currentUser.name, email: currentUser.email });
     setErrors({});
     setIsValid(true);
   }, []);

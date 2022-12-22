@@ -79,7 +79,7 @@ function Login(props) {
         errorMessage={errors.password}
       />
       <FormDevider classNameModifier='form-devider_place_login'>
-        <ErrorMessage errorMessage={errorMessage}/>
+        <ErrorMessage errorMessage={errorMessage} />
       </FormDevider>
       <AuthButtons
         buttonText='Войти'

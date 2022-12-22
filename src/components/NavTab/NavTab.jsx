@@ -13,10 +13,7 @@ function NavTab() {
         </Link>
       </li>
       <li>
-        <Link
-          className='nav-tab__link nav-tab__link_type_login'
-          to='/signin'
-        >
+        <Link className='nav-tab__link nav-tab__link_type_login' to='/signin'>
           Войти
         </Link>
       </li>

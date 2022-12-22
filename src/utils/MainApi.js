@@ -35,14 +35,6 @@ class MainApi {
     }).then(handleResponse);
   }
 
-  sendToken(token) {
-    return this._request({
-      url: '/users/me',
-      method: 'GET',
-      token,
-    }).then(handleResponse);
-  }
-
   getUserInfo(token) {
     return this._request({
       url: '/users/me',
@@ -61,29 +53,23 @@ class MainApi {
   }
 
   saveMovie(data, token) {
-    return (
-      this._request({
-        url: '/movies',
-        token,
-        data: {
-          movieId: data.movieId,
-          trailerLink: data.trailerLink,
-          image: data.image,
-          nameRU: data.nameRU,
-          nameEN: data.nameEN,
-          thumbnail: data.thumbnail,
-          country: data.country,
-          year: data.year,
-          description: data.description,
-          director: data.director,
-          duration: data.duration,
-        },
-      })
-        // .then((res) => {
-        //   return res;
-        // })
-        .then(handleResponse)
-    );
+    return this._request({
+      url: '/movies',
+      token,
+      data: {
+        movieId: data.movieId,
+        trailerLink: data.trailerLink,
+        image: data.image,
+        nameRU: data.nameRU,
+        nameEN: data.nameEN,
+        thumbnail: data.thumbnail,
+        country: data.country,
+        year: data.year,
+        description: data.description,
+        director: data.director,
+        duration: data.duration,
+      },
+    }).then(handleResponse);
   }
 
   getSavedMovies(token) {

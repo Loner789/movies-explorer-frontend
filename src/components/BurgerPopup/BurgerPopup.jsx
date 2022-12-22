@@ -13,14 +13,14 @@ function BurgerPopup(props) {
     if (!isOpen) return;
 
     const closeByEscape = (e) => {
-      if (e.key === "Escape") {
+      if (e.key === 'Escape') {
         onClose();
       }
     };
 
-    document.addEventListener("keydown", closeByEscape);
+    document.addEventListener('keydown', closeByEscape);
 
-    return () => document.removeEventListener("keydown", closeByEscape);
+    return () => document.removeEventListener('keydown', closeByEscape);
   }, [isOpen, onClose]);
 
   // Functions:
@@ -49,7 +49,11 @@ function BurgerPopup(props) {
               </NavLink>
             </li>
             <li>
-              <NavLink to='/saved-movies' className={setActive} onClick={onClose}>
+              <NavLink
+                to='/saved-movies'
+                className={setActive}
+                onClick={onClose}
+              >
                 Сохранённые фильмы
               </NavLink>
             </li>

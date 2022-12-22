@@ -84,9 +84,10 @@ function App() {
   function checkToken() {
     if (localStorage.token) {
       mainApi
-        .sendToken(localStorage.token)
+        .getUserInfo(localStorage.token)
         .then((data) => {
-          data.email === localStorage.getItem('email') && navigate('/movies');
+          data.email === localStorage.getItem('email') && setCurrentUser(data);
+          navigate('/movies');
         })
         .catch((err) => {
           console.log(err);

@@ -9,7 +9,7 @@ import Portfolio from '../Portfolio/Portfolio';
 function AboutMe() {
   return (
     <section className='about-me'>
-      <SectionTitle title='Студент'/>
+      <SectionTitle title='Студент' />
       <div className='about-me__container'>
         <div className='about-me__info'>
           <h3 className='about-me__name'>Дмитрий</h3>
@@ -26,7 +26,9 @@ function AboutMe() {
             rel='noreferrer'
             href='https://github.com/Loner789/movies-explorer-frontend'
             target='blank'
-          >Github</ExternalLink>
+          >
+            Github
+          </ExternalLink>
         </div>
         <div className='about-me__photo'></div>
       </div>

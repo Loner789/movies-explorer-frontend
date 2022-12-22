@@ -3,7 +3,7 @@ import './AuthButtons.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// FORM-BUTTONS COMPONENT:
+// AUTH-BUTTONS COMPONENT:
 function AuthButtons(props) {
   // Constants:
   const { buttonText, buttonCaption, link, linkText, isValid } = props;

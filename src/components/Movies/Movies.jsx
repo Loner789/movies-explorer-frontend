@@ -1,6 +1,6 @@
 // IMPORTS:
 import './Movies.css';
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -65,15 +65,18 @@ function Movies(props) {
             errorMessage={errorMessage}
           />
         )}
-        {!errorMessage && !isFirstVisit && isSearchValid && movies.length === 0 && (
-          <Message
-            currentPath={currentPath}
-            movies={movies}
-            isLoading={isLoading}
-            message='Ничего не найдено'
-            errorMessage={errorMessage}
-          />
-        )}
+        {!errorMessage &&
+          !isFirstVisit &&
+          isSearchValid &&
+          movies.length === 0 && (
+            <Message
+              currentPath={currentPath}
+              movies={movies}
+              isLoading={isLoading}
+              message='Ничего не найдено'
+              errorMessage={errorMessage}
+            />
+          )}
         {!errorMessage && !isSearchValid && isSearchStarted && (
           <Message
             currentPath={currentPath}
