@@ -75,7 +75,10 @@ function App() {
     }
   }, [currentPath]);
 
-  useEffect(() => setErrorMessage(''), [currentPath]);
+  useEffect(() => {
+    setErrorMessage('');
+    setIsChangingClicked(false);
+  }, [currentPath]);
 
   // Functions:
   function checkToken() {
@@ -93,23 +96,17 @@ function App() {
     }
   }
 
-  function setCurrentUserInfo() {
-    const token = localStorage.getItem('token');
-
-    setErrorMessage('');
-
-    if (token) {
-      mainApi
-        .getUserInfo(localStorage.token)
-        .then((data) => {
-          setCurrentUser(data);
-          localStorage.setItem('email', data.email);
-        })
-        .catch((err) => {
-          console.log(err);
-          setErrorMessage(DEFAULT_ERROR_MESSAGE);
-        });
-    }
+  function setCurrentUserInfo(token) {
+    mainApi
+      .getUserInfo(token)
+      .then((data) => {
+        setCurrentUser(data);
+        localStorage.setItem('email', data.email);
+      })
+      .catch((err) => {
+        console.log(err);
+        setErrorMessage(DEFAULT_ERROR_MESSAGE);
+      });
   }
 
   function loadSavedMovies() {
@@ -155,7 +152,7 @@ function App() {
         if (!data.token) {
           return Promise.reject('No token');
         }
-
+        setCurrentUserInfo(data.token);
         localStorage.setItem('loggedIn', true);
         localStorage.setItem('token', data.token);
         navigate('/movies');
@@ -177,9 +174,8 @@ function App() {
 
     return mainApi
       .register(name, email, password)
-      .then((data) => {
+      .then(() => {
         authorizeUser(email, password);
-        setCurrentUser(data);
       })
       .catch((err) => {
         console.log(err);
@@ -504,7 +500,6 @@ function App() {
                   isChangingClicked={isChangingClicked}
                   isProfileUpdated={isProfileUpdated}
                   errorMessage={errorMessage}
-                  setCurrentUserInfo={setCurrentUserInfo}
                 />
               </ProtectedRoute>
             }

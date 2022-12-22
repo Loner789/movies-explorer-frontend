@@ -22,7 +22,6 @@ function Profile(props) {
     isChangingClicked,
     isProfileUpdated,
     errorMessage,
-    setCurrentUserInfo,
   } = props;
   const {
     values,
@@ -32,10 +31,17 @@ function Profile(props) {
     setValues,
     resetForm,
     setIsValid,
+    setErrors
   } = useFormAndValidation({});
 
   // Side-effects:
-  useEffect(() => setCurrentUserInfo(), []);
+  // useEffect(() => setCurrentUserInfo(), []);
+
+  useEffect(() => {
+    setValues({ name: currentUser.name, email: currentUser.email});
+    setErrors({});
+    setIsValid(true);
+  }, []);
 
   useEffect(() => {
     resetForm();
@@ -132,7 +138,11 @@ function Profile(props) {
               className={`profile__button profile__button_type_save ${
                 !isChangingClicked ? 'profile__button_disactive' : ''
               }`}
-              disabled={!isValid}
+              disabled={
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+              }
             >
               Сохранить
             </button>
