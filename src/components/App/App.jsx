@@ -30,6 +30,7 @@ import {
   MOVIE_SAVE_ERROR_MESSAGE,
   MOVIE_DELETE_ERROR_MESSAGE,
   SERVER_ERROR_MESSAGE,
+  FETCH_ERROR_MESSAGE,
 } from '../../utils/constants';
 
 // BASE COMPONENT OF APPLICATION:
@@ -87,7 +88,6 @@ function App() {
         .getUserInfo(localStorage.token)
         .then((data) => {
           data.email === localStorage.getItem('email') && setCurrentUser(data);
-          navigate('/movies');
         })
         .catch((err) => {
           console.log(err);
@@ -172,6 +172,7 @@ function App() {
 
   function handleRegister(name, email, password) {
     setErrorMessage('');
+    setIsLoading(true);
 
     return mainApi
       .register(name, email, password)
@@ -186,16 +187,20 @@ function App() {
         errorCode === '409'
           ? setErrorMessage(CONFLICT_ERROR_MESSAGE)
           : setErrorMessage(DEFAULT_ERROR_MESSAGE);
-      });
+      })
+      .finally(() => setIsLoading(false));
   }
 
   function handleLogin(email, password) {
     setErrorMessage('');
+    setIsLoading(true);
 
-    authorizeUser(email, password);
+    authorizeUser(email, password).finally(() => setIsLoading(false));
   }
 
   function handleProfileChange(name, email) {
+    setIsChangingClicked(false);
+
     mainApi
       .setUserInfo(name, email, localStorage.token)
       .then((items) => {
@@ -205,6 +210,14 @@ function App() {
       })
       .catch((err) => {
         console.log(err);
+
+        if (err.message) {
+          if (err.message === 'Failed to fetch')
+            setErrorMessage(FETCH_ERROR_MESSAGE);
+          else setErrorMessage(DEFAULT_ERROR_MESSAGE);
+
+          return;
+        }
 
         const errorCode = getErrorCode(err);
         errorCode === '409'
@@ -512,13 +525,18 @@ function App() {
               <Register
                 onRegister={handleRegister}
                 errorMessage={errorMessage}
+                isLoading={isLoading}
               />
             }
           />
           <Route
             path='/signin'
             element={
-              <Login onLogin={handleLogin} errorMessage={errorMessage} />
+              <Login
+                onLogin={handleLogin}
+                errorMessage={errorMessage}
+                isLoading={isLoading}
+              />
             }
           />
           <Route path='*' element={<NotFoundPage />} />

@@ -19,7 +19,7 @@ const initValues = {
 // REGISTER COMPONENT:
 function Register(props) {
   // Constants:
-  const { onRegister, errorMessage } = props;
+  const { onRegister, errorMessage, isLoading } = props;
   const { values, errors, isValid, handleChange, setIsValid } =
     useFormAndValidation(initValues);
 
@@ -100,12 +100,13 @@ function Register(props) {
         <ErrorMessage errorMessage={errorMessage} />
       </FormDevider>
       <AuthButtons
-        buttonText='Зарегистрироваться'
+        buttonText={isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
         buttonCaption='Уже зарегистрированы?'
         link='/signin'
         linkText='Войти'
         onSubmit={handleSubmit}
         isValid={isValid}
+        isLoading={isLoading}
       />
     </AuthPage>
   );

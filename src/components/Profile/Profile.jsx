@@ -35,8 +35,6 @@ function Profile(props) {
   } = useFormAndValidation({});
 
   // Side-effects:
-  // useEffect(() => setCurrentUserInfo(), []);
-
   useEffect(() => {
     setValues({ name: currentUser.name, email: currentUser.email });
     setErrors({});

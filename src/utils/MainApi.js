@@ -11,7 +11,6 @@ class MainApi {
 
   _request({ url, method = 'POST', token, data }) {
     return fetch(`${this.baseUrl}${url}`, {
-      //   credentials: 'include',
       method,
       headers: {
         'Content-Type': this.contentType,
