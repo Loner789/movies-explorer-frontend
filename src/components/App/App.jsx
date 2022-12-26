@@ -190,6 +190,14 @@ function App() {
       .catch((err) => {
         console.log(err);
 
+        if (err.message) {
+          if (err.message === 'Failed to fetch')
+            setErrorMessage(FETCH_ERROR_MESSAGE);
+          else setErrorMessage(DEFAULT_ERROR_MESSAGE);
+
+          return;
+        }
+
         const errorCode = getErrorCode(err);
 
         errorCode === '409'
