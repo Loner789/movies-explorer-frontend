@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "ghDeploy": "gh-pages -d build",
-    "deploy": "npm run build && scp -r ./build/* loner@158.160.5.251:/home/loner/movies-explorer-frontend/build"
+    "deploy": "npm run build && scp -r ./build/* loner@158.160.5.251:/home/loner/movies-explorer-frontend"
   },
   "eslintConfig": {
     "extends": [
