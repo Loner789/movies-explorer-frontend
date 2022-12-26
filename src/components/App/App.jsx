@@ -161,6 +161,14 @@ function App() {
       .catch((err) => {
         console.log(err);
 
+        if (err.message) {
+          if (err.message === 'Failed to fetch')
+            setErrorMessage(FETCH_ERROR_MESSAGE);
+          else setErrorMessage(DEFAULT_ERROR_MESSAGE);
+
+          return;
+        }
+
         const errorCode = getErrorCode(err);
 
         if (errorCode === '401') setErrorMessage(AUTH_ERROR_MESSAGE);
@@ -220,6 +228,7 @@ function App() {
         }
 
         const errorCode = getErrorCode(err);
+
         errorCode === '409'
           ? setErrorMessage(CONFLICT_ERROR_MESSAGE)
           : setErrorMessage(DEFAULT_ERROR_MESSAGE);
