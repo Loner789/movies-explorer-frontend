@@ -2,8 +2,6 @@
 
 **_[Cсылка на проект на сервере](https://movies-explorer.loner.nomoredomains.club)_**
 
-**_[Cсылка на проект на Github](https://loner789.github.io/movies-explorer-frontend/)_**
-
 ---
 
 ### Описание
