@@ -8,6 +8,7 @@ import Message from '../Message/Message';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
+import { NAME_PATTERN } from '../../utils/constants';
 
 // PROFILE COMPONENT:
 function Profile(props) {
@@ -30,12 +31,13 @@ function Profile(props) {
     setValues,
     resetForm,
     setIsValid,
+    setErrors,
   } = useFormAndValidation({});
 
   // Side-effects:
   useEffect(() => {
-    resetForm();
     setValues({ name: currentUser.name, email: currentUser.email });
+    setErrors({});
     setIsValid(true);
   }, []);
 
@@ -51,7 +53,7 @@ function Profile(props) {
 
     const { name, email } = values;
 
-    onProfileChange({ name: name, email: email });
+    onProfileChange(name, email);
   }
 
   return (
@@ -80,7 +82,7 @@ function Profile(props) {
             maxLength='30'
             onChange={handleChange}
             value={values.name || ''}
-            pattern='^[a-zA-Zа-яА-Я\s-]+$'
+            pattern={NAME_PATTERN}
             disabled={!isChangingClicked}
           />
           <FormInput
@@ -134,7 +136,11 @@ function Profile(props) {
               className={`profile__button profile__button_type_save ${
                 !isChangingClicked ? 'profile__button_disactive' : ''
               }`}
-              disabled={!isValid}
+              disabled={
+                !isValid ||
+                (values.name === currentUser.name &&
+                  values.email === currentUser.email)
+              }
             >
               Сохранить
             </button>

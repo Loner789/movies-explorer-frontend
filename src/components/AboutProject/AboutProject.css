@@ -80,7 +80,8 @@
 
 .about-project__graph-info_type_frontend {
     width: 80%;
-    background-color: #303030;;
+    background-color: #303030;
+    ;
     color: #FFF;
 }
 
@@ -99,6 +100,7 @@
         padding-left: 50px;
         padding-right: 50px;
     }
+
     .about-project__info-wrapper {
         gap: 30px;
     }

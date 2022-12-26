@@ -39,6 +39,36 @@ function Portfolio() {
             Одностраничное приложение
           </ExternalLink>
         </li>
+        <li>
+          <ExternalLink
+            className='portfolio__link'
+            rel='noreferrer'
+            href='https://github.com/Loner789/lubimovka'
+            target='blank'
+          >
+            Дополнительный командный проект #1
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            className='portfolio__link'
+            rel='noreferrer'
+            href='https://github.com/Loner789/lubimovka_2.0'
+            target='blank'
+          >
+            Дополнительный командный проект #2
+          </ExternalLink>
+        </li>
+        <li>
+          <ExternalLink
+            className='portfolio__link'
+            rel='noreferrer'
+            href='https://github.com/Loner789/hackathon-design-web'
+            target='blank'
+          >
+            Хакатон "Design&Web"
+          </ExternalLink>
+        </li>
       </ul>
     </div>
   );

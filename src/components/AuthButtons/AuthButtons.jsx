@@ -3,17 +3,17 @@ import './AuthButtons.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-// FORM-BUTTONS COMPONENT:
+// AUTH-BUTTONS COMPONENT:
 function AuthButtons(props) {
   // Constants:
-  const { buttonText, buttonCaption, link, linkText, isValid } = props;
+  const { buttonText, buttonCaption, link, linkText, isValid, isLoading } = props;
 
   return (
     <div className='auth-buttons'>
       <button
         type='submit'
         className='auth-buttons__button auth-buttons__button_type_submit'
-        disabled={!isValid}
+        disabled={!isValid || isLoading}
       >
         {buttonText}
       </button>

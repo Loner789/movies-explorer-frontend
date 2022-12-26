@@ -17,7 +17,7 @@ const initValues = {
 // LOGIN COMPONENT:
 function Login(props) {
   // Constants:
-  const { onLogin, errorMessage } = props;
+  const { onLogin, errorMessage, isLoading } = props;
   const { values, errors, isValid, handleChange, setIsValid } =
     useFormAndValidation(initValues);
 
@@ -79,15 +79,16 @@ function Login(props) {
         errorMessage={errors.password}
       />
       <FormDevider classNameModifier='form-devider_place_login'>
-        <ErrorMessage errorMessage={errorMessage}/>
+        <ErrorMessage errorMessage={errorMessage} />
       </FormDevider>
       <AuthButtons
-        buttonText='Войти'
+        buttonText={isLoading ? 'Выполняется вход...' : 'Войти'}
         buttonCaption='Ещё не зарегистрированы?'
         link='/signup'
         linkText='Регистрация'
         onSubmit={handleSubmit}
         isValid={isValid}
+        isLoading={isLoading}
       />
     </AuthPage>
   );

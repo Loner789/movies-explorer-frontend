@@ -7,6 +7,7 @@ import FormDevider from '../FormDevider/FormDevider';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import AuthButtons from '../AuthButtons/AuthButtons';
 import useFormAndValidation from '../../hooks/useFormAndValidation';
+import { NAME_PATTERN } from '../../utils/constants';
 
 // Initial data for state-variable
 const initValues = {
@@ -18,7 +19,7 @@ const initValues = {
 // REGISTER COMPONENT:
 function Register(props) {
   // Constants:
-  const { onRegister, errorMessage } = props;
+  const { onRegister, errorMessage, isLoading } = props;
   const { values, errors, isValid, handleChange, setIsValid } =
     useFormAndValidation(initValues);
 
@@ -55,7 +56,7 @@ function Register(props) {
         maxLength='30'
         onChange={handleChange}
         value={values.name || ''}
-        pattern='^[a-zA-Zа-яА-Я\s-]+$'
+        pattern={NAME_PATTERN}
       />
       <FormInputError
         classNameModifier='form-input-error_place_auth'
@@ -99,12 +100,13 @@ function Register(props) {
         <ErrorMessage errorMessage={errorMessage} />
       </FormDevider>
       <AuthButtons
-        buttonText='Зарегистрироваться'
+        buttonText={isLoading ? 'Регистрация...' : 'Зарегистрироваться'}
         buttonCaption='Уже зарегистрированы?'
         link='/signin'
         linkText='Войти'
         onSubmit={handleSubmit}
         isValid={isValid}
+        isLoading={isLoading}
       />
     </AuthPage>
   );

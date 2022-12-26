@@ -1,14 +1,11 @@
 // IMPORTS:
 import './SavedMovies.css';
-import React from 'react';
+import React, { useEffect } from 'react';
 import SearchForm from '../SearchForm/SearchForm';
 import Preloader from '../Preloader/Preloader';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Devider from '../Devider/Devider';
-import ButtonMore from '../ButtonMore/ButtonMore';
 import Message from '../Message/Message';
-import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import useMoviesAmount from '../../hooks/useMoviesAmount';
 
 // SAVED-MOVIES COMPONENT:
 function SavedMovies(props) {
@@ -16,50 +13,68 @@ function SavedMovies(props) {
   const {
     movies,
     currentPath,
+    isLoading,
+    isShortFilm,
+    setIsSearchStarted,
+    isSearchValid,
     onCheckboxChange,
     onSearch,
-    isLoading,
-    isFirstVisit,
+    isSearchStarted,
+    savedMoviesSearchResult,
     onMovieDelete,
+    setIsSearchValid,
     errorMessage,
+    loadSavedMovies,
   } = props;
-  const { moviesAmount, addMoreMovies } = useMoviesAmount();
+  const moviesList = isSearchStarted ? savedMoviesSearchResult : movies;
+
+  // Side-effects:
+  useEffect(() => loadSavedMovies(), []);
 
   return (
     <main className='saved-movies' aria-label='Сохранённые фильмы.'>
-      <SearchForm onCheckboxChange={onCheckboxChange} onSearch={onSearch} />
-      <MoviesCardList
-        movies={movies}
+      <SearchForm
         currentPath={currentPath}
-        moviesAmount={moviesAmount}
+        isShortFilm={isShortFilm}
+        onCheckboxChange={onCheckboxChange}
+        onSearch={onSearch}
+        setIsSearchStarted={setIsSearchStarted}
+        setIsSearchValid={setIsSearchValid}
+      />
+      <MoviesCardList
+        movies={moviesList}
+        currentPath={currentPath}
         onMovieDelete={onMovieDelete}
       />
-      <Preloader isLoading={isLoading} />
       <Devider>
-        <ButtonMore
-          movies={movies}
-          moviesAmount={moviesAmount}
-          onClick={addMoreMovies}
-        />
-        {(isFirstVisit || !localStorage.savedMovies) && (
+        <Preloader isLoading={isLoading} />
+        {!errorMessage && isSearchValid && moviesList.length === 0 && (
           <Message
             currentPath={currentPath}
-            movies={movies}
+            movies={moviesList}
             isLoading={isLoading}
-            message='У вас пока что нет сохранённых фильмов'
+            message='Ничего не найдено'
             errorMessage={errorMessage}
           />
         )}
-        {!isFirstVisit && movies.length === 0 && (
+        {!errorMessage && !isSearchValid && isSearchStarted && (
           <Message
             currentPath={currentPath}
-            movies={movies}
+            movies={moviesList}
             isLoading={isLoading}
-            message='По вашему запросу ничего не найдено'
+            message='Нужно ввести ключевое слово'
             errorMessage={errorMessage}
           />
         )}
-        <ErrorMessage errorMessage={errorMessage}/>
+        {errorMessage && (
+          <Message
+            currentPath={currentPath}
+            movies={moviesList}
+            isLoading={isLoading}
+            message={errorMessage}
+            errorMessage={errorMessage}
+          />
+        )}
       </Devider>
     </main>
   );
